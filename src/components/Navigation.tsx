@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useDealer } from '../contexts/DealerContext';
 import { trackCtaClick } from '../lib/analytics';
@@ -19,15 +19,14 @@ export default function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0f1e]/95 backdrop-blur-xl border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-red-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center" aria-label="Go to homepage">
-            <img
-              src="/trinity-wordmark.jpg"
-              alt={dealer?.name || 'Trinity Motorcar Company'}
-              className="h-12 md:h-14 w-auto object-contain"
-            />
+          <Link to="/" className="flex items-center space-x-2" aria-label="Go to homepage">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-600 to-red-700 flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">U</span>
+            </div>
+            <span className="text-gray-900 font-bold text-lg hidden sm:block">Uptown Auto Sales</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -37,23 +36,31 @@ export default function Navigation() {
                 to={link.path}
                 className={`relative px-1 py-6 text-sm font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-white'
-                    : 'text-gray-400 hover:text-white'
+                    ? 'text-red-600'
+                    : 'text-gray-700 hover:text-red-600'
                 }`}
               >
                 {link.label}
                 {isActive(link.path) && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#4dd4d4] shadow-[0_0_10px_#4dd4d4]"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600"></div>
                 )}
               </Link>
             ))}
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
+            <a 
+              href="tel:706-295-9700" 
+              onClick={() => trackCtaClick('call', { source: 'navigation' })}
+              className="flex items-center space-x-2 text-red-600 hover:text-red-700 transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              <span className="font-medium">706-295-9700</span>
+            </a>
             <Link
               to="/contact"
               onClick={() => trackCtaClick('contact', { source: 'navigation' })}
-              className="px-6 py-2 rounded-full border border-[#4dd4d4]/50 bg-[#4dd4d4]/10 text-[#4dd4d4] text-sm font-medium hover:bg-[#4dd4d4]/20 transition-all"
+              className="px-6 py-2 rounded-full bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-all shadow-md hover:shadow-lg"
             >
               Contact Us
             </Link>
@@ -61,7 +68,7 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+            className="md:hidden p-2 rounded-lg text-gray-700 hover:text-red-600 hover:bg-red-50 transition-colors"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -69,7 +76,7 @@ export default function Navigation() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[#0a0f1e] backdrop-blur-xl border-t border-white/10">
+        <div className="md:hidden bg-white border-t border-red-200 shadow-lg">
           <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -78,13 +85,21 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'bg-[#4dd4d4]/20 text-[#4dd4d4]'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    ? 'bg-red-50 text-red-600'
+                    : 'text-gray-700 hover:text-red-600 hover:bg-red-50'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+            <a 
+              href="tel:706-295-9700" 
+              onClick={() => { trackCtaClick('call', { source: 'mobile-nav' }); setIsOpen(false); }}
+              className="flex items-center space-x-2 px-4 py-3 text-red-600 font-medium"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Now: 706-295-9700</span>
+            </a>
           </div>
         </div>
       )}

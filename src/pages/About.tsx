@@ -1,120 +1,164 @@
-import { Award, Users, Heart, Shield } from 'lucide-react';
+import { Award, Users, Heart, Shield, Phone, MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-24 pb-12">
+    <div className="min-h-screen bg-white pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Trinity</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+            About <span className="text-red-600">Uptown Auto Sales</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Trinity Motorcar Company is your trusted automotive partner in Rome, Georgia. We're committed to providing exceptional vehicles, transparent pricing, and outstanding service.
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            Your trusted hometown dealership in Rome, Georgia. We've been serving the community 
+            with quality vehicles, honest pricing, and exceptional customer service since 2005.
           </p>
         </div>
 
+        {/* Mission & Promise */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/10">
-            <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
-            <p className="text-gray-400 leading-relaxed mb-6">
-              At Trinity Motorcar Company, we believe car buying should be exciting, not stressful. Our mission is to provide quality vehicles at fair prices with a transparent, no-pressure approach that puts you in control.
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              At Uptown Auto Sales, we believe everyone deserves reliable transportation, 
+              regardless of their credit history. Our mission is to provide quality pre-owned 
+              vehicles with flexible financing options that work for real people with real budgets.
             </p>
-            <p className="text-gray-400 leading-relaxed">
-              We're more than just a dealership. We're a family-owned business that treats every customer like part of our family. Whether you're buying your first car or upgrading to something new, we're here to help you every step of the way.
+            <p className="text-gray-600 leading-relaxed">
+              We're not just selling cars – we're building relationships. As a family-owned 
+              business, we treat every customer like a neighbor, because you are! When you 
+              buy from Uptown, you become part of our extended family.
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/10">
-            <h2 className="text-3xl font-bold text-white mb-6">Our Promise</h2>
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Promise</h2>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-400">No hidden fees or surprise charges</p>
+                <p className="text-gray-600">No hidden fees or surprise charges</p>
               </li>
               <li className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-400">FREE CARFAX reports on every vehicle</p>
+                <p className="text-gray-600">Every vehicle thoroughly inspected</p>
               </li>
               <li className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-400">Financing options for all credit situations</p>
+                <p className="text-gray-600">Financing options for ALL credit situations</p>
               </li>
               <li className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-400">Extended warranties available for peace of mind</p>
+                <p className="text-gray-600">Buy Here Pay Here – in-house financing available</p>
               </li>
               <li className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-400">Bilingual staff ready to serve you</p>
+                <p className="text-gray-600">Friendly, no-pressure sales approach</p>
               </li>
             </ul>
           </div>
         </div>
 
+        {/* Value Props */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {[
             {
               icon: Award,
               title: 'Quality Selection',
-              description: 'Carefully inspected vehicles that meet our high standards',
+              description: 'Hand-picked vehicles that meet our strict quality standards',
             },
             {
               icon: Users,
               title: 'Expert Team',
-              description: 'Knowledgeable staff dedicated to finding your perfect match',
+              description: 'Friendly staff with decades of automotive experience',
             },
             {
               icon: Heart,
-              title: 'Customer First',
-              description: 'Your satisfaction is our top priority, always',
+              title: 'Family Owned',
+              description: 'Local business serving Rome, GA since 2005',
             },
             {
               icon: Shield,
               title: 'Trustworthy',
-              description: 'Transparent pricing and honest communication every time',
+              description: 'Honest pricing and transparent financing every time',
             },
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center hover:border-blue-500/50 transition-all duration-300 group"
+              className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:border-red-300 hover:shadow-lg transition-all duration-300 group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <item.icon className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-red-50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <item.icon className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-gray-400 text-sm">{item.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+              <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-xl rounded-3xl p-12 border border-white/10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Find Your <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Perfect Vehicle?</span>
+        {/* Contact Info */}
+        <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-8 md:p-12 mb-16">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">Call Us</h3>
+              <a href="tel:706-295-9700" className="text-blue-200 hover:text-white transition-colors">
+                706-295-9700
+              </a>
+            </div>
+            <div>
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">Visit Us</h3>
+              <p className="text-blue-200">
+                Rome, GA 30161
+              </p>
+            </div>
+            <div>
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">Hours</h3>
+              <p className="text-blue-200">
+                Mon-Sat: 9AM-7PM<br />
+                Sunday: Closed
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-200 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Ready to Find Your <span className="text-red-600">Perfect Vehicle?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-            Visit us at our dealership in Rome, GA, or browse our inventory online. Our team is ready to help you drive home in your dream car.
+          <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+            Visit us in Rome, GA, or browse our inventory online. Whether you have 
+            great credit, bad credit, or no credit – we can help you get approved!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/inventory"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-blue-500/50 hover:shadow-blue-500/80 transition-all duration-300 hover:scale-105"
+              className="px-8 py-4 rounded-lg bg-red-600 text-white font-semibold shadow-lg hover:bg-red-700 hover:shadow-xl transition-all duration-300"
             >
               Browse Inventory
             </Link>
             <Link
               to="/contact"
-              className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300"
+              className="px-8 py-4 rounded-lg bg-white border-2 border-red-600 text-red-600 font-semibold hover:bg-red-50 transition-all duration-300"
             >
               Contact Us
             </Link>
