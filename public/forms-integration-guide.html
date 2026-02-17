@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fender-AI Forms Integration Guide</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h1 { color: #0066cc; margin-bottom: 10px; font-size: 2.5em; }
+    h2 { color: #0066cc; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #0066cc; }
+    h3 { color: #333; margin-top: 30px; margin-bottom: 15px; }
+    h4 { color: #555; margin-top: 20px; margin-bottom: 10px; }
+    .intro { background: #e7f3ff; padding: 20px; border-left: 4px solid #0066cc; margin-bottom: 30px; border-radius: 4px; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+    pre { background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 6px; overflow-x: auto; margin: 20px 0; }
+    pre code { background: none; padding: 0; color: inherit; }
+    .note { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; border-radius: 4px; }
+    .warning { background: #f8d7da; padding: 15px; border-left: 4px solid #dc3545; margin: 20px 0; border-radius: 4px; }
+    .success { background: #d4edda; padding: 15px; border-left: 4px solid #28a745; margin: 20px 0; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table th, table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    table th { background: #f8f9fa; font-weight: 600; }
+    ul, ol { margin-left: 30px; margin-bottom: 15px; }
+    li { margin-bottom: 8px; }
+    .form-type-card { background: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0; border: 1px solid #dee2e6; }
+    .endpoint { background: #e7f3ff; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fender-AI Forms Integration Guide</h1>
+    <p style="color: #666; font-size: 1.1em; margin-bottom: 30px;">
+      Complete developer documentation for integrating customer forms with the Fender-AI API
+    </p>
+
+    <div class="intro">
+      <h3>Quick Start</h3>
+      <p>This guide provides everything you need to integrate contact forms, lead submissions, credit applications, and trade-in inquiries into your website. All forms submit to a single unified API endpoint with proper authentication and error handling.</p>
+    </div>
+
+    <h2>1. API Configuration</h2>
+
+    <h3>Base Configuration</h3>
+    <p>Store your API configuration securely. Never expose API keys in client-side code for production environments.</p>
+
+    <pre><code>// API Configuration
+const FENDER_API_CONFIG = {
+  baseUrl: 'https://apaaabypiufsboprsqvn.supabase.co/functions/v1',
+  apiKey: 'fdr_efb7addd795187ed6a8fe1f9b7eb872e3cff268135f88e13b5ef3d4469558aec'
+};</code></pre>
+
+    <div class="note">
+      <strong>Getting Your API Key:</strong> Contact your Fender-AI administrator or access the DMS Settings &gt; API Keys section to generate your unique API key.
+    </div>
+
+    <h3>API Endpoint</h3>
+    <div class="endpoint">
+      POST /functions/v1/public-submit-form
+    </div>
+
+    <h3>Required Headers</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Header</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>X-Fender-API-Key</code></td>
+          <td>Your API key</td>
+          <td>Authentication token for API access</td>
+        </tr>
+        <tr>
+          <td><code>Content-Type</code></td>
+          <td>application/json</td>
+          <td>Request body format</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Form Types</h2>
+
+    <div class="form-type-card">
+      <h3>Contact Form</h3>
+      <p><strong>Type:</strong> <code>contact</code></p>
+      <p><strong>Use Case:</strong> General inquiries and customer service requests</p>
+      <p><strong>Required Fields:</strong> first_name, last_name, phone, email</p>
+    </div>
+
+    <div class="form-type-card">
+      <h3>Lead / Vehicle Inquiry</h3>
+      <p><strong>Type:</strong> <code>lead</code></p>
+      <p><strong>Use Case:</strong> Vehicle-specific inquiries, test drive requests, pricing questions</p>
+      <p><strong>Required Fields:</strong> first_name, last_name, phone, email</p>
+      <p><strong>Optional Fields:</strong> vehicle_interest, inquiry_type, preferred_contact_time, message</p>
+    </div>
+
+    <div class="form-type-card">
+      <h3>Credit Application</h3>
+      <p><strong>Type:</strong> <code>credit_application</code></p>
+      <p><strong>Use Case:</strong> Financing pre-approval applications</p>
+      <p><strong>Required Fields:</strong> first_name, last_name, phone, email, address, city, state, zip, date_of_birth, ssn_last_four, employment_status, monthly_income, housing_status, monthly_housing_payment</p>
+    </div>
+
+    <div class="form-type-card">
+      <h3>Trade-In Inquiry</h3>
+      <p><strong>Type:</strong> <code>trade_inquiry</code></p>
+      <p><strong>Use Case:</strong> Vehicle trade-in appraisal requests</p>
+      <p><strong>Required Fields:</strong> customer_name (or first_name/last_name), phone, email, vehicle_year, vehicle_make, vehicle_model, mileage, condition</p>
+    </div>
+
+    <h2>3. Complete Form Examples</h2>
+
+    <h3>Contact Form - HTML + JavaScript</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Contact Us&lt;/title&gt;
+  &lt;style&gt;
+    .form-container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .submit-btn {
+      background: #0066cc;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .submit-btn:hover { background: #0052a3; }
+    .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="form-container"&gt;
+    &lt;h2&gt;Contact Us&lt;/h2&gt;
+
+    &lt;div id="messageContainer"&gt;&lt;/div&gt;
+
+    &lt;form id="contactForm"&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;First Name *&lt;/label&gt;
+        &lt;input type="text" id="firstName" required&gt;
+      &lt;/div&gt;
+
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;Last Name *&lt;/label&gt;
+        &lt;input type="text" id="lastName" required&gt;
+      &lt;/div&gt;
+
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;Email *&lt;/label&gt;
+        &lt;input type="email" id="email" required&gt;
+      &lt;/div&gt;
+
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;Phone *&lt;/label&gt;
+        &lt;input type="tel" id="phone" placeholder="(555) 123-4567" required&gt;
+      &lt;/div&gt;
+
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;Message&lt;/label&gt;
+        &lt;textarea id="message" rows="4"&gt;&lt;/textarea&gt;
+      &lt;/div&gt;
+
+      &lt;button type="submit" class="submit-btn" id="submitBtn"&gt;Send Message&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    const API_URL = 'https://apaaabypiufsboprsqvn.supabase.co/functions/v1';
+    const API_KEY = 'fdr_efb7addd795187ed6a8fe1f9b7eb872e3cff268135f88e13b5ef3d4469558aec';
+
+    document.getElementById('contactForm').addEventListener('submit', async (e) =&gt; {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submitBtn');
+      const messageContainer = document.getElementById('messageContainer');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      messageContainer.innerHTML = '';
+
+      try {
+        const response = await fetch(`${API_URL}/public-submit-form`, {
+          method: 'POST',
+          headers: {
+            'X-Fender-API-Key': API_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            type: 'contact',
+            first_name: document.getElementById('firstName').value,
+            last_name: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          messageContainer.innerHTML = `
+            &lt;div class="success-message"&gt;
+              &lt;strong&gt;Thank you!&lt;/strong&gt; Your message has been sent successfully.
+            &lt;/div&gt;
+          `;
+          document.getElementById('contactForm').reset();
+        } else {
+          throw new Error(result.error || 'Failed to send message');
+        }
+
+      } catch (error) {
+        messageContainer.innerHTML = `
+          &lt;div class="error-message"&gt;
+            &lt;strong&gt;Error:&lt;/strong&gt; ${error.message}
+          &lt;/div&gt;
+        `;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>Vehicle Inquiry Form (Lead)</h3>
+    <pre><code>// JavaScript only - add to your existing HTML form
+const submitVehicleInquiry = async (formData) =&gt; {
+  const response = await fetch(`${API_URL}/public-submit-form`, {
+    method: 'POST',
+    headers: {
+      'X-Fender-API-Key': API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: 'lead',
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      vehicle_interest: formData.vehicle, // e.g., "2022 Toyota Camry SE"
+      inquiry_type: formData.inquiryType, // 'test_drive', 'more_info', 'pricing', etc.
+      preferred_contact_time: formData.contactTime, // 'Morning', 'Afternoon', 'Evening', 'Anytime'
+      message: formData.message
+    })
+  });
+
+  return await response.json();
+};</code></pre>
+
+    <h3>Credit Application Form</h3>
+    <pre><code>const submitCreditApplication = async (formData) =&gt; {
+  const response = await fetch(`${API_URL}/public-submit-form`, {
+    method: 'POST',
+    headers: {
+      'X-Fender-API-Key': API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: 'credit_application',
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      date_of_birth: formData.dateOfBirth, // YYYY-MM-DD format
+      ssn_last_four: formData.ssnLast4, // Last 4 digits only
+      address: formData.address,
+      city: formData.city,
+      state: formData.state,
+      zip: formData.zip,
+      employment_status: formData.employmentStatus, // 'employed', 'self_employed', 'retired', 'other'
+      employer_name: formData.employerName,
+      monthly_income: parseFloat(formData.monthlyIncome),
+      housing_status: formData.housingStatus, // 'own', 'rent', 'living_with_family', 'other'
+      monthly_housing_payment: parseFloat(formData.monthlyHousingPayment),
+      vehicle_interest: formData.vehicleInterest, // optional
+      down_payment: parseFloat(formData.downPayment) || 0 // optional
+    })
+  });
+
+  return await response.json();
+};</code></pre>
+
+    <h3>Trade-In Inquiry Form</h3>
+    <pre><code>const submitTradeInquiry = async (formData) =&gt; {
+  const response = await fetch(`${API_URL}/public-submit-form`, {
+    method: 'POST',
+    headers: {
+      'X-Fender-API-Key': API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: 'trade_inquiry',
+      customer_name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      vehicle_year: parseInt(formData.year),
+      vehicle_make: formData.make,
+      vehicle_model: formData.model,
+      mileage: parseInt(formData.mileage),
+      condition: formData.condition, // 'excellent', 'good', 'fair', 'poor'
+      vin: formData.vin, // optional
+      payoff_amount: parseFloat(formData.payoffAmount) || 0, // optional
+      notes: formData.notes // optional
+    })
+  });
+
+  return await response.json();
+};</code></pre>
+
+    <h2>4. React Integration</h2>
+
+    <h3>Custom Hook for Form Submission</h3>
+    <pre><code>import { useState } from 'react';
+
+export function useFenderForm(apiUrl, apiKey) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [submissionId, setSubmissionId] = useState(null);
+
+  const submitForm = async (payload) =&gt; {
+    setSubmitting(true);
+    setError(null);
+    setSuccess(false);
+
+    try {
+      const response = await fetch(`${apiUrl}/public-submit-form`, {
+        method: 'POST',
+        headers: {
+          'X-Fender-API-Key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Form submission failed');
+      }
+
+      setSuccess(true);
+      setSubmissionId(result.submission_id);
+      return result;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return { submitForm, submitting, error, success, submissionId };
+}</code></pre>
+
+    <h3>React Component Example</h3>
+    <pre><code>import { useFenderForm } from './hooks/useFenderForm';
+
+function ContactForm() {
+  const { submitForm, submitting, error, success } = useFenderForm(
+    'https://apaaabypiufsboprsqvn.supabase.co/functions/v1',
+    'fdr_efb7addd795187ed6a8fe1f9b7eb872e3cff268135f88e13b5ef3d4469558aec'
+  );
+
+  const handleSubmit = async (e) =&gt; {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    await submitForm({
+      type: 'contact',
+      first_name: formData.get('firstName'),
+      last_name: formData.get('lastName'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      message: formData.get('message')
+    });
+  };
+
+  if (success) {
+    return &lt;div&gt;Thank you! We'll be in touch soon.&lt;/div&gt;;
+  }
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      {error && &lt;div className="error"&gt;{error}&lt;/div&gt;}
+      &lt;input name="firstName" required placeholder="First Name" /&gt;
+      &lt;input name="lastName" required placeholder="Last Name" /&gt;
+      &lt;input name="email" type="email" required placeholder="Email" /&gt;
+      &lt;input name="phone" type="tel" required placeholder="Phone" /&gt;
+      &lt;textarea name="message" placeholder="Message" /&gt;
+      &lt;button type="submit" disabled={submitting}&gt;
+        {submitting ? 'Sending...' : 'Send Message'}
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+
+    <h2>5. API Response Format</h2>
+
+    <h3>Success Response</h3>
+    <pre><code>{
+  "success": true,
+  "submission_id": "123e4567-e89b-12d3-a456-426614174000",
+  "message": "Form submitted successfully",
+  "dealer": "Trinity Motorcar"
+}</code></pre>
+
+    <h3>Error Response</h3>
+    <pre><code>{
+  "error": "Missing required field: email",
+  "details": "Please provide all required information"
+}</code></pre>
+
+    <h2>6. Error Handling Best Practices</h2>
+
+    <div class="note">
+      <h4>Common Error Scenarios</h4>
+      <ul>
+        <li><strong>Invalid API Key:</strong> Returns 401 Unauthorized</li>
+        <li><strong>Missing Required Fields:</strong> Returns 400 Bad Request with details</li>
+        <li><strong>Network Errors:</strong> Handle with try/catch and provide user feedback</li>
+        <li><strong>Server Errors:</strong> Returns 500 Internal Server Error</li>
+      </ul>
+    </div>
+
+    <pre><code>try {
+  const response = await fetch(/* ... */);
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() =&gt; ({ error: 'Unknown error' }));
+    throw new Error(errorData.error || `HTTP ${response.status}`);
+  }
+
+  const result = await response.json();
+  // Handle success
+} catch (error) {
+  if (error.message.includes('Failed to fetch')) {
+    // Network error - possibly CORS or no internet
+    console.error('Network error:', error);
+  } else {
+    // API error or other error
+    console.error('API error:', error.message);
+  }
+}</code></pre>
+
+    <h2>7. Security Best Practices</h2>
+
+    <div class="warning">
+      <h4>Important Security Notes</h4>
+      <ul>
+        <li><strong>API Key Protection:</strong> For production, consider proxying requests through your backend to hide the API key</li>
+        <li><strong>Input Validation:</strong> Always validate and sanitize user input on the client side</li>
+        <li><strong>HTTPS Only:</strong> Always use HTTPS for form submissions to protect sensitive data</li>
+        <li><strong>Rate Limiting:</strong> Implement client-side rate limiting to prevent abuse</li>
+        <li><strong>CORS:</strong> The API includes proper CORS headers for cross-origin requests</li>
+      </ul>
+    </div>
+
+    <h2>8. Testing Your Integration</h2>
+
+    <h3>Test Checklist</h3>
+    <ol>
+      <li>Verify API key is correctly configured</li>
+      <li>Test form submission with valid data</li>
+      <li>Test with missing required fields</li>
+      <li>Test error handling and user feedback</li>
+      <li>Verify success messages display correctly</li>
+      <li>Check that form resets after successful submission</li>
+      <li>Test on multiple browsers and devices</li>
+      <li>Verify data appears in the Fender-AI DMS</li>
+    </ol>
+
+    <h3>Test Form Submission with cURL</h3>
+    <pre><code>curl -X POST https://apaaabypiufsboprsqvn.supabase.co/functions/v1/public-submit-form \
+  -H "X-Fender-API-Key: fdr_efb7addd795187ed6a8fe1f9b7eb872e3cff268135f88e13b5ef3d4469558aec" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "contact",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john@example.com",
+    "phone": "555-123-4567",
+    "message": "Test message"
+  }'</code></pre>
+
+    <h2>9. Support & Resources</h2>
+
+    <div class="success">
+      <h4>Need Help?</h4>
+      <p>For technical support, API issues, or integration questions:</p>
+      <ul>
+        <li>Email: support@fender-ai.com</li>
+        <li>Documentation: https://docs.fender-ai.com</li>
+        <li>Status Page: https://status.fender-ai.com</li>
+      </ul>
+    </div>
+
+    <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
+
+    <p style="text-align: center; color: #999; font-size: 0.9em;">
+      &copy; 2024 Fender-AI. All rights reserved. | Version 1.0
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Supabase Edge Functions Configuration
+# Functions with custom auth MUST disable gateway JWT verification
+
+[functions.inventory-sync-run]
+verify_jwt = false
+
+[functions.api-config-save]
+verify_jwt = false
+
+[functions.public-dealer]
+verify_jwt = false
+
+[functions.public-inventory]
+verify_jwt = false
+
+[functions.public-vehicle]
+verify_jwt = false
+
+[functions.public-submit-form]
+verify_jwt = false
+
+[functions.public-submit-credit-app]
+verify_jwt = false
+
+[functions.public-analytics-ingest]
+verify_jwt = false
+
+[functions.customer-chatbot]
+verify_jwt = false
