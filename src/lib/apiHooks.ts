@@ -1,6 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { fenderApi } from './fenderApi';
+import { mockApi } from './mockData';
 import type { InventoryParams, FenderDealer, FenderVehicle, InventoryResponse } from './fenderApi';
+
+// Use mock data in standalone mode (before Fender-AI integration)
+const useMockData = import.meta.env.VITE_USE_MOCK_DATA === 'true';
+const api = useMockData ? mockApi : fenderApi;
 
 const DEALER_CACHE_KEY = 'trinity_dealer_info';
 const DEALER_CACHE_DURATION = 24 * 60 * 60 * 1000;
@@ -43,7 +48,7 @@ export function useDealer() {
 
     async function fetchDealer() {
       try {
-        const dealer = await fenderApi.getDealer();
+        const dealer = await api.getDealer();
         if (!cancelled) {
           setCachedDealer(dealer);
           setData(dealer);
@@ -91,7 +96,7 @@ export function useInventory(params: InventoryParams = {}) {
 
     async function fetchInventory() {
       try {
-        const response = await fenderApi.getInventory(memoizedParams);
+        const response = await api.getInventory(memoizedParams);
         if (!cancelled) {
           setData(response);
         }
@@ -132,7 +137,7 @@ export function useVehicle(vehicleId: string | undefined) {
 
     async function fetchVehicle() {
       try {
-        const vehicle = await fenderApi.getVehicle(vehicleId);
+        const vehicle = await api.getVehicle(vehicleId);
         if (!cancelled) {
           setData(vehicle);
         }
@@ -160,7 +165,7 @@ export function useVehicle(vehicleId: string | undefined) {
 export function usePreloadVehicles(vehicleIds: string[]) {
   return () => {
     vehicleIds.forEach(vehicleId => {
-      fenderApi.getVehicle(vehicleId).catch(() => {});
+      api.getVehicle(vehicleId).catch(() => {});
     });
   };
 }
@@ -171,6 +176,6 @@ export function usePreloadNextPage(params: InventoryParams) {
       ...params,
       offset: (params.offset || 0) + (params.limit || 20),
     };
-    fenderApi.getInventory(nextPageParams).catch(() => {});
+    api.getInventory(nextPageParams).catch(() => {});
   };
 }
