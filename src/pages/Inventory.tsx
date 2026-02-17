@@ -103,24 +103,24 @@ export default function Inventory() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-24 pb-12">
+    <div className="min-h-screen bg-gradient-to-b from-[#0a0f1e] via-[#0d1530] to-[#0a0f1e] pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Inventory</span>
+            Our <span className="bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">Inventory</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-blue-200/70 text-lg">
             {loading ? 'Loading...' : `${total} vehicle${total !== 1 ? 's' : ''} available`}
           </p>
         </div>
 
         <div className="lg:grid lg:grid-cols-[280px_1fr] lg:gap-8">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 max-h-[calc(100vh-120px)] overflow-y-auto">
+            <div className="sticky top-24 bg-blue-950/40 backdrop-blur-xl rounded-2xl p-6 border border-blue-800/40 max-h-[calc(100vh-120px)] overflow-y-auto">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold text-white">Filters</h2>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">
+                  <span className="px-2 py-1 rounded-full bg-red-600 text-white text-xs font-semibold">
                     {activeFilterCount}
                   </span>
                 )}
@@ -133,7 +133,7 @@ export default function Inventory() {
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="w-full mt-6 px-4 py-3 rounded-lg bg-red-600/20 border border-red-500/30 text-red-300 hover:bg-red-600/30 transition-all font-semibold"
+                  className="w-full mt-6 px-4 py-3 rounded-lg bg-red-600 border border-red-500 text-white hover:bg-red-700 transition-all font-semibold"
                 >
                   Clear All Filters
                 </button>
@@ -150,16 +150,16 @@ export default function Inventory() {
                   placeholder="Search by make, model, trim, VIN, or stock #..."
                   value={filters.search}
                   onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-all"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-blue-950/30 border border-blue-800/40 text-white placeholder-blue-300/40 focus:outline-none focus:border-red-500/60 transition-all"
                 />
               </div>
               <button
                 onClick={() => setShowMobileFilters(true)}
-                className="relative px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all flex items-center justify-center"
+                className="relative px-4 py-3 rounded-xl bg-blue-950/30 border border-blue-800/40 text-white hover:bg-blue-900/40 transition-all flex items-center justify-center"
               >
                 <SlidersHorizontal className="w-5 h-5" />
                 {activeFilterCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">
                     {activeFilterCount}
                   </span>
                 )}
@@ -176,7 +176,7 @@ export default function Inventory() {
                   placeholder="Search by make, model, trim, VIN, or stock #..."
                   value={filters.search}
                   onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-all"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-blue-950/30 border border-blue-800/40 text-white placeholder-blue-300/40 focus:outline-none focus:border-red-500/60 transition-all"
                 />
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function Inventory() {
 
             {loading ? (
               <div className="text-center py-20">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-red-500"></div>
                 <p className="text-gray-400 mt-4">Loading vehicles...</p>
               </div>
             ) : error ? (
@@ -201,7 +201,7 @@ export default function Inventory() {
                 <p className="text-red-400 text-lg">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="mt-4 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+                  className="mt-4 px-6 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors"
                 >
                   Try Again
                 </button>
@@ -212,7 +212,7 @@ export default function Inventory() {
                 {activeFilterCount > 0 && (
                   <button
                     onClick={clearFilters}
-                    className="mt-4 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+                    className="mt-4 px-6 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors"
                   >
                     Clear Filters
                   </button>
@@ -224,7 +224,7 @@ export default function Inventory() {
                   {paginatedVehicles.map((vehicle, index) => (
                 <div
                   key={vehicle.id}
-                  className="group relative bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300"
+                  className="group relative bg-blue-950/30 backdrop-blur-lg rounded-2xl overflow-hidden border border-blue-800/30 hover:border-red-500/60 transition-all duration-300"
                 >
                   <Link
                     to={`/inventory/${vehicle.slug || vehicle.id}`}
@@ -260,11 +260,11 @@ export default function Inventory() {
                             </div>
                           )}
                           {vehicle.asking_price && vehicle.asking_price > 0 ? (
-                            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                            <div className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                               ${vehicle.asking_price.toLocaleString()}
                             </div>
                           ) : (
-                            <div className="text-lg font-bold text-blue-400">
+                            <div className="text-lg font-bold text-red-400">
                               Call for Price
                             </div>
                           )}
@@ -272,7 +272,7 @@ export default function Inventory() {
                             <div className="text-gray-500 text-sm">{vehicle.mileage.toLocaleString()} mi</div>
                           )}
                         </div>
-                        <div className="px-4 py-2 rounded-full bg-blue-500/20 text-blue-400 text-sm font-semibold">
+                        <div className="px-4 py-2 rounded-full bg-red-600/20 border border-red-500/40 text-red-300 text-sm font-semibold">
                           View Details
                         </div>
                       </div>
@@ -280,17 +280,17 @@ export default function Inventory() {
                       {(vehicle.fuel_type || vehicle.transmission || vehicle.drivetrain) && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           {vehicle.fuel_type && (
-                            <span className="px-2.5 py-1 rounded-full bg-white/10 text-gray-200 text-xs border border-white/15">
+                            <span className="px-2.5 py-1 rounded-full bg-blue-900/40 text-blue-100 text-xs border border-blue-700/40">
                               {vehicle.fuel_type}
                             </span>
                           )}
                           {vehicle.transmission && (
-                            <span className="px-2.5 py-1 rounded-full bg-white/10 text-gray-200 text-xs border border-white/15">
+                            <span className="px-2.5 py-1 rounded-full bg-blue-900/40 text-blue-100 text-xs border border-blue-700/40">
                               {vehicle.transmission}
                             </span>
                           )}
                           {vehicle.drivetrain && (
-                            <span className="px-2.5 py-1 rounded-full bg-white/10 text-gray-200 text-xs border border-white/15">
+                            <span className="px-2.5 py-1 rounded-full bg-blue-900/40 text-blue-100 text-xs border border-blue-700/40">
                               {vehicle.drivetrain}
                             </span>
                           )}
@@ -340,7 +340,7 @@ export default function Inventory() {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       disabled={page === 1}
-                      className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                      className="px-4 py-2 rounded-lg bg-blue-950/40 border border-blue-800/40 text-white hover:bg-blue-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                     >
                       <ChevronLeft className="w-5 h-5" />
                       <span>Previous</span>
@@ -356,7 +356,7 @@ export default function Inventory() {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       disabled={page === totalPages}
-                      className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                      className="px-4 py-2 rounded-lg bg-blue-950/40 border border-blue-800/40 text-white hover:bg-blue-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                     >
                       <span>Next</span>
                       <ChevronRight className="w-5 h-5" />
@@ -375,19 +375,19 @@ export default function Inventory() {
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => setShowMobileFilters(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-gradient-to-b from-gray-900 to-black rounded-t-3xl border-t border-white/10 overflow-hidden flex flex-col">
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-gradient-to-b from-[#0d1530] to-[#0a0f1e] rounded-t-3xl border-t border-blue-800/40 overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between p-6 border-b border-blue-800/40">
               <div className="flex items-center space-x-3">
                 <h2 className="text-xl font-bold text-white">Filters</h2>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">
+                  <span className="px-2 py-1 rounded-full bg-red-600 text-white text-xs font-semibold">
                     {activeFilterCount}
                   </span>
                 )}
               </div>
               <button
                 onClick={() => setShowMobileFilters(false)}
-                className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                className="p-2 rounded-lg bg-blue-900/30 text-gray-400 hover:text-white hover:bg-blue-800/50 transition-all"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -399,21 +399,21 @@ export default function Inventory() {
                 vehicles={allVehicles}
               />
             </div>
-            <div className="p-6 border-t border-white/10 bg-black/50 space-y-3">
+            <div className="p-6 border-t border-blue-800/40 bg-blue-950/30 space-y-3">
               {activeFilterCount > 0 && (
                 <button
                   onClick={() => {
                     clearFilters();
                     setShowMobileFilters(false);
                   }}
-                  className="w-full px-4 py-3 rounded-lg bg-red-600/20 border border-red-500/30 text-red-300 hover:bg-red-600/30 transition-all font-semibold"
+                  className="w-full px-4 py-3 rounded-lg bg-red-600 border border-red-500 text-white hover:bg-red-700 transition-all font-semibold"
                 >
                   Clear All Filters
                 </button>
               )}
               <button
                 onClick={() => setShowMobileFilters(false)}
-                className="w-full px-4 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all font-semibold"
+                className="w-full px-4 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all font-semibold"
               >
                 Show {total} Vehicle{total !== 1 ? 's' : ''}
               </button>
