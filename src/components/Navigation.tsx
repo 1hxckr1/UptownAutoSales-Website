@@ -109,13 +109,6 @@ export default function Navigation() {
               <Phone className="w-4 h-4" />
               <span className="font-medium">706-295-9700</span>
             </a>
-            <Link
-              to="/contact"
-              onClick={() => trackCtaClick('contact', { source: 'navigation' })}
-              className="px-6 py-2 rounded-full bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-all shadow-md hover:shadow-lg"
-            >
-              Contact Us
-            </Link>
           </div>
 
           <button
