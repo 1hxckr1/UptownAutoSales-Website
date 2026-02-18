@@ -126,49 +126,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Badges */}
-      <section className="py-12 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-red-600" />
-              </div>
-              <div>
-                <div className="font-semibold text-gray-900">Quality Vehicles</div>
-                <div className="text-sm text-gray-600">Thoroughly inspected</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <FileCheck className="w-6 h-6 text-blue-700" />
-              </div>
-              <div>
-                <div className="font-semibold text-gray-900">Easy Financing</div>
-                <div className="text-sm text-gray-600">Bad credit OK</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <Heart className="w-6 h-6 text-red-600" />
-              </div>
-              <div>
-                <div className="font-semibold text-gray-900">Family Owned</div>
-                <div className="text-sm text-gray-600">Trusted since 2005</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-blue-700" />
-              </div>
-              <div>
-                <div className="font-semibold text-gray-900">In-House Financing</div>
-                <div className="text-sm text-gray-600">Flexible payment options</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Featured Inventory */}
       <section className="py-16 bg-white">
