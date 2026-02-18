@@ -107,7 +107,7 @@ export default function Inventory() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-            Our <span className="text-red-600">Inventory</span>
+            <span className="text-red-600">Inventory</span>
           </h1>
           <p className="text-gray-600 text-lg">
             {loading ? 'Loading...' : `${total} vehicle${total !== 1 ? 's' : ''} available`}
