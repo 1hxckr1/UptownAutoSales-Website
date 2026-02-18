@@ -116,28 +116,19 @@ export default function Inventory() {
 
         <div className="lg:grid lg:grid-cols-[280px_1fr] lg:gap-8">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm max-h-[calc(100vh-120px)] overflow-y-auto">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-bold text-gray-900">Filters</h2>
-                {activeFilterCount > 0 && (
-                  <span className="px-2 py-1 rounded-full bg-red-600 text-white text-xs font-semibold">
-                    {activeFilterCount}
-                  </span>
-                )}
+            <div
+              className="sticky top-24 rounded-2xl border border-[#c5cfe8] shadow-md max-h-[calc(100vh-120px)] overflow-y-auto"
+              style={{ background: 'linear-gradient(160deg, #f8faff 0%, #fff8f8 60%, #f8faff 100%)' }}
+            >
+              <div className="p-5">
+                <InventoryFiltersPanel
+                  filters={filters}
+                  onChange={setFilters}
+                  vehicles={allVehicles}
+                  onClearAll={clearFilters}
+                  activeFilterCount={activeFilterCount}
+                />
               </div>
-              <InventoryFiltersPanel
-                filters={filters}
-                onChange={setFilters}
-                vehicles={allVehicles}
-              />
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={clearFilters}
-                  className="w-full mt-6 px-4 py-3 rounded-lg bg-red-600 border border-red-500 text-white hover:bg-red-700 transition-all font-semibold"
-                >
-                  Clear All Filters
-                </button>
-              )}
             </div>
           </aside>
 
@@ -375,45 +366,40 @@ export default function Inventory() {
             className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => setShowMobileFilters(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-3xl border-t border-gray-200 overflow-hidden flex flex-col">
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div className="flex items-center space-x-3">
-                <h2 className="text-xl font-bold text-gray-900">Filters</h2>
+          <div
+            className="absolute bottom-0 left-0 right-0 max-h-[85vh] rounded-t-3xl border-t-2 border-[#1a2a4a] overflow-hidden flex flex-col"
+            style={{ background: 'linear-gradient(160deg, #f8faff 0%, #fff8f8 60%, #f8faff 100%)' }}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#c5cfe8]">
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-6 rounded-full bg-red-600" />
+                <h2 className="text-lg font-bold text-[#1a2a4a]">Filter Center</h2>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-1 rounded-full bg-red-600 text-white text-xs font-semibold">
+                  <span className="px-2 py-0.5 rounded-full bg-[#1a2a4a] text-white text-xs font-bold">
                     {activeFilterCount}
                   </span>
                 )}
               </div>
               <button
                 onClick={() => setShowMobileFilters(false)}
-                className="p-2 rounded-lg bg-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-200 transition-all"
+                className="p-2 rounded-lg bg-white border border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition-all shadow-sm"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto px-5 py-4">
               <InventoryFiltersPanel
                 filters={filters}
                 onChange={setFilters}
                 vehicles={allVehicles}
+                onClearAll={() => { clearFilters(); setShowMobileFilters(false); }}
+                activeFilterCount={activeFilterCount}
               />
             </div>
-            <div className="p-6 border-t border-gray-200 bg-white space-y-3">
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={() => {
-                    clearFilters();
-                    setShowMobileFilters(false);
-                  }}
-                  className="w-full px-4 py-3 rounded-lg bg-red-600 border border-red-500 text-white hover:bg-red-700 transition-all font-semibold"
-                >
-                  Clear All Filters
-                </button>
-              )}
+            <div className="px-5 py-4 border-t border-[#c5cfe8] bg-white space-y-2.5">
               <button
                 onClick={() => setShowMobileFilters(false)}
-                className="w-full px-4 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all font-semibold"
+                className="w-full px-4 py-3 rounded-xl bg-red-600 border-2 border-[#1a2a4a] text-white font-bold text-base hover:bg-red-700 transition-all shadow-md"
               >
                 Show {total} Vehicle{total !== 1 ? 's' : ''}
               </button>

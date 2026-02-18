@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { X, Check } from 'lucide-react';
+import { X, Check, SlidersHorizontal } from 'lucide-react';
 import { InventoryFilters, FEATURE_MAP } from '../lib/filterHelpers';
 
 interface InventoryFiltersProps {
@@ -7,9 +7,96 @@ interface InventoryFiltersProps {
   onChange: (filters: InventoryFilters) => void;
   vehicles: any[];
   className?: string;
+  onClearAll?: () => void;
+  activeFilterCount?: number;
 }
 
-export function InventoryFiltersPanel({ filters, onChange, vehicles, className = '' }: InventoryFiltersProps) {
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-3">
+      <span className="text-xs font-bold text-[#1a2a4a] uppercase tracking-widest whitespace-nowrap">{title}</span>
+      <div className="flex-1 h-px bg-gray-200" />
+    </div>
+  );
+}
+
+function SelectField({
+  value,
+  onChange,
+  options,
+  placeholder,
+  disabled,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+  placeholder: string;
+  disabled?: boolean;
+}) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      disabled={disabled}
+      className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-[#1a2a4a] focus:ring-1 focus:ring-[#1a2a4a] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+    >
+      <option value="">{placeholder}</option>
+      {options.map((o) => (
+        <option key={o} value={o}>{o}</option>
+      ))}
+    </select>
+  );
+}
+
+function NumberRangeField({
+  minValue,
+  maxValue,
+  onMinChange,
+  onMaxChange,
+  minPlaceholder,
+  maxPlaceholder,
+}: {
+  minValue: number | null;
+  maxValue: number | null;
+  onMinChange: (v: number | null) => void;
+  onMaxChange: (v: number | null) => void;
+  minPlaceholder: string;
+  maxPlaceholder: string;
+}) {
+  return (
+    <div className="grid grid-cols-2 gap-2">
+      <div>
+        <label className="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Min</label>
+        <input
+          type="number"
+          placeholder={minPlaceholder}
+          value={minValue ?? ''}
+          onChange={(e) => onMinChange(e.target.value ? Number(e.target.value) : null)}
+          className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-[#1a2a4a] focus:ring-1 focus:ring-[#1a2a4a] transition-colors"
+        />
+      </div>
+      <div>
+        <label className="block text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Max</label>
+        <input
+          type="number"
+          placeholder={maxPlaceholder}
+          value={maxValue ?? ''}
+          onChange={(e) => onMaxChange(e.target.value ? Number(e.target.value) : null)}
+          className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-[#1a2a4a] focus:ring-1 focus:ring-[#1a2a4a] transition-colors"
+        />
+      </div>
+    </div>
+  );
+}
+
+export function InventoryFiltersPanel({
+  filters,
+  onChange,
+  vehicles,
+  className = '',
+  onClearAll,
+  activeFilterCount = 0,
+}: InventoryFiltersProps) {
   const inventoryStats = useMemo(() => {
     if (!vehicles || vehicles.length === 0) {
       return {
@@ -55,11 +142,9 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
 
   const updateFilter = (key: keyof InventoryFilters, value: any) => {
     const newFilters = { ...filters, [key]: value };
-
     if (key === 'make') {
       newFilters.model = '';
     }
-
     onChange(newFilters);
   };
 
@@ -67,7 +152,6 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
     const newFeatures = filters.features.includes(feature)
       ? filters.features.filter(f => f !== feature)
       : [...filters.features, feature];
-
     updateFilter('features', newFeatures);
   };
 
@@ -75,232 +159,165 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
 
   return (
     <div className={`space-y-6 ${className}`}>
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Popular Features
-        </h3>
-        <div className="grid grid-cols-1 gap-2">
-          {availableFeatures.map(feature => (
-            <label
-              key={feature}
-              className="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-gray-50 border border-gray-200 hover:bg-gray-100 cursor-pointer transition-all group"
+
+      {/* Panel header */}
+      <div className="flex items-center justify-between pb-4 border-b-2 border-[#1a2a4a]">
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal className="w-4 h-4 text-[#1a2a4a]" />
+          <div>
+            <h2 className="text-base font-bold text-[#1a2a4a] leading-tight">Filter Center</h2>
+            <p className="text-[10px] text-gray-400 leading-tight">Narrow down your perfect ride</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          {activeFilterCount > 0 && (
+            <span className="px-2 py-0.5 rounded-full bg-[#1a2a4a] text-white text-xs font-bold">
+              {activeFilterCount}
+            </span>
+          )}
+          {onClearAll && activeFilterCount > 0 && (
+            <button
+              onClick={onClearAll}
+              className="px-3 py-1 rounded-full border border-red-600 text-red-600 text-xs font-semibold hover:bg-red-600 hover:text-white transition-all"
             >
-              <input
-                type="checkbox"
-                checked={filters.features.includes(feature)}
-                onChange={() => toggleFeature(feature)}
-                className="hidden"
-              />
-              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
-                filters.features.includes(feature)
-                  ? 'bg-red-600 border-red-600'
-                  : 'border-gray-300 group-hover:border-gray-400'
-              }`}>
-                {filters.features.includes(feature) && (
-                  <Check className="w-3 h-3 text-white" />
-                )}
-              </div>
-              <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
+              Clear all
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Section: Quick Picks */}
+      <div>
+        <SectionHeader title="Quick Picks" />
+        <div className="flex flex-wrap gap-2">
+          {availableFeatures.map(feature => {
+            const selected = filters.features.includes(feature);
+            return (
+              <button
+                key={feature}
+                type="button"
+                onClick={() => toggleFeature(feature)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+                  selected
+                    ? 'bg-[#1a2a4a] text-white border-red-500 shadow-sm'
+                    : 'bg-white text-[#1a2a4a] border-gray-300 hover:bg-blue-50 hover:border-[#1a2a4a]'
+                }`}
+              >
+                {selected && <Check className="w-3 h-3 flex-shrink-0" />}
                 {feature}
-              </span>
-            </label>
-          ))}
+              </button>
+            );
+          })}
         </div>
       </div>
 
+      {/* Section: Make & Model */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Price Range
-        </h3>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Min</label>
-            <input
-              type="number"
-              placeholder={`$${inventoryStats.minPrice.toLocaleString()}`}
-              value={filters.priceMin ?? ''}
-              onChange={(e) => updateFilter('priceMin', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Max</label>
-            <input
-              type="number"
-              placeholder={`$${inventoryStats.maxPrice.toLocaleString()}`}
-              value={filters.priceMax ?? ''}
-              onChange={(e) => updateFilter('priceMax', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Mileage Range
-        </h3>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Min</label>
-            <input
-              type="number"
-              placeholder={`${inventoryStats.minMileage.toLocaleString()}`}
-              value={filters.milesMin ?? ''}
-              onChange={(e) => updateFilter('milesMin', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Max</label>
-            <input
-              type="number"
-              placeholder={`${inventoryStats.maxMileage.toLocaleString()}`}
-              value={filters.milesMax ?? ''}
-              onChange={(e) => updateFilter('milesMax', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Year Range
-        </h3>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Min</label>
-            <input
-              type="number"
-              placeholder={`${inventoryStats.minYear}`}
-              value={filters.yearMin ?? ''}
-              onChange={(e) => updateFilter('yearMin', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-gray-500 mb-1">Max</label>
-            <input
-              type="number"
-              placeholder={`${inventoryStats.maxYear}`}
-              value={filters.yearMax ?? ''}
-              onChange={(e) => updateFilter('yearMax', e.target.value ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Make & Model
-        </h3>
-        <div className="space-y-3">
-          <select
+        <SectionHeader title="Make & Model" />
+        <div className="space-y-2">
+          <SelectField
             value={filters.make}
-            onChange={(e) => updateFilter('make', e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-          >
-            <option value="" className="bg-white text-gray-900">All Makes</option>
-            {inventoryStats.makes.map(make => (
-              <option key={make} value={make} className="bg-white text-gray-900">{make}</option>
-            ))}
-          </select>
-          <select
+            onChange={(v) => updateFilter('make', v)}
+            options={inventoryStats.makes}
+            placeholder="All Makes"
+          />
+          <SelectField
             value={filters.model}
-            onChange={(e) => updateFilter('model', e.target.value)}
+            onChange={(v) => updateFilter('model', v)}
+            options={inventoryStats.models}
+            placeholder="All Models"
             disabled={!filters.make}
-            className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <option value="" className="bg-white text-gray-900">All Models</option>
-            {inventoryStats.models.map(model => (
-              <option key={model} value={model} className="bg-white text-gray-900">{model}</option>
-            ))}
-          </select>
+          />
         </div>
       </div>
 
+      {/* Section: Vehicle Details */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Body Style
-        </h3>
-        <select
-          value={filters.bodyStyle}
-          onChange={(e) => updateFilter('bodyStyle', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-        >
-          <option value="" className="bg-white text-gray-900">All Body Styles</option>
-          {inventoryStats.bodyStyles.map(style => (
-            <option key={style} value={style} className="bg-white text-gray-900">{style}</option>
-          ))}
-        </select>
+        <SectionHeader title="Vehicle Details" />
+        <div className="space-y-2">
+          <SelectField
+            value={filters.bodyStyle}
+            onChange={(v) => updateFilter('bodyStyle', v)}
+            options={inventoryStats.bodyStyles}
+            placeholder="All Body Styles"
+          />
+          <SelectField
+            value={filters.transmission}
+            onChange={(v) => updateFilter('transmission', v)}
+            options={inventoryStats.transmissions}
+            placeholder="All Transmissions"
+          />
+          <SelectField
+            value={filters.drivetrain}
+            onChange={(v) => updateFilter('drivetrain', v)}
+            options={inventoryStats.drivetrains}
+            placeholder="All Drivetrains"
+          />
+          <SelectField
+            value={filters.fuelType}
+            onChange={(v) => updateFilter('fuelType', v)}
+            options={inventoryStats.fuelTypes}
+            placeholder="All Fuel Types"
+          />
+        </div>
       </div>
 
+      {/* Section: Price & Mileage */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Transmission
-        </h3>
-        <select
-          value={filters.transmission}
-          onChange={(e) => updateFilter('transmission', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-        >
-          <option value="" className="bg-white text-gray-900">All Transmissions</option>
-          {inventoryStats.transmissions.map(trans => (
-            <option key={trans} value={trans} className="bg-white text-gray-900">{trans}</option>
-          ))}
-        </select>
+        <SectionHeader title="Price & Mileage" />
+        <div className="space-y-3">
+          <div>
+            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Price Range</p>
+            <NumberRangeField
+              minValue={filters.priceMin}
+              maxValue={filters.priceMax}
+              onMinChange={(v) => updateFilter('priceMin', v)}
+              onMaxChange={(v) => updateFilter('priceMax', v)}
+              minPlaceholder={`$${inventoryStats.minPrice.toLocaleString()}`}
+              maxPlaceholder={`$${inventoryStats.maxPrice.toLocaleString()}`}
+            />
+          </div>
+          <div>
+            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Mileage Range</p>
+            <NumberRangeField
+              minValue={filters.milesMin}
+              maxValue={filters.milesMax}
+              onMinChange={(v) => updateFilter('milesMin', v)}
+              onMaxChange={(v) => updateFilter('milesMax', v)}
+              minPlaceholder={`${inventoryStats.minMileage.toLocaleString()}`}
+              maxPlaceholder={`${inventoryStats.maxMileage.toLocaleString()}`}
+            />
+          </div>
+          <div>
+            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Year Range</p>
+            <NumberRangeField
+              minValue={filters.yearMin}
+              maxValue={filters.yearMax}
+              onMinChange={(v) => updateFilter('yearMin', v)}
+              onMaxChange={(v) => updateFilter('yearMax', v)}
+              minPlaceholder={`${inventoryStats.minYear}`}
+              maxPlaceholder={`${inventoryStats.maxYear}`}
+            />
+          </div>
+        </div>
       </div>
 
+      {/* Section: Sorting */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Drivetrain
-        </h3>
-        <select
-          value={filters.drivetrain}
-          onChange={(e) => updateFilter('drivetrain', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-        >
-          <option value="" className="bg-white text-gray-900">All Drivetrains</option>
-          {inventoryStats.drivetrains.map(drive => (
-            <option key={drive} value={drive} className="bg-white text-gray-900">{drive}</option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Fuel Type
-        </h3>
-        <select
-          value={filters.fuelType}
-          onChange={(e) => updateFilter('fuelType', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
-        >
-          <option value="" className="bg-white text-gray-900">All Fuel Types</option>
-          {inventoryStats.fuelTypes.map(fuel => (
-            <option key={fuel} value={fuel} className="bg-white text-gray-900">{fuel}</option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-          Sort By
-        </h3>
+        <SectionHeader title="Sorting" />
         <select
           value={filters.sort}
           onChange={(e) => updateFilter('sort', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+          className="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-[#1a2a4a] focus:ring-1 focus:ring-[#1a2a4a] transition-colors"
         >
-          <option value="newest" className="bg-white text-gray-900">Newest First</option>
-          <option value="price_asc" className="bg-white text-gray-900">Price: Low to High</option>
-          <option value="price_desc" className="bg-white text-gray-900">Price: High to Low</option>
-          <option value="year_desc" className="bg-white text-gray-900">Year: Newest</option>
-          <option value="mileage_asc" className="bg-white text-gray-900">Mileage: Lowest</option>
+          <option value="newest">Newest First</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="year_desc">Year: Newest</option>
+          <option value="mileage_asc">Mileage: Lowest</option>
         </select>
       </div>
+
     </div>
   );
 }
@@ -320,17 +337,17 @@ export function FilterChips({ filters, onRemove, onClearAll }: FilterChipsProps)
   if (filters.priceMin !== null || filters.priceMax !== null) {
     const min = filters.priceMin !== null ? `$${filters.priceMin.toLocaleString()}` : 'Any';
     const max = filters.priceMax !== null ? `$${filters.priceMax.toLocaleString()}` : 'Any';
-    chips.push({ label: `Price: ${min} - ${max}`, key: 'priceMin' });
+    chips.push({ label: `Price: ${min} – ${max}`, key: 'priceMin' });
   }
   if (filters.milesMin !== null || filters.milesMax !== null) {
     const min = filters.milesMin !== null ? filters.milesMin.toLocaleString() : 'Any';
     const max = filters.milesMax !== null ? filters.milesMax.toLocaleString() : 'Any';
-    chips.push({ label: `Miles: ${min} - ${max}`, key: 'milesMin' });
+    chips.push({ label: `Miles: ${min} – ${max}`, key: 'milesMin' });
   }
   if (filters.yearMin !== null || filters.yearMax !== null) {
     const min = filters.yearMin !== null ? filters.yearMin : 'Any';
     const max = filters.yearMax !== null ? filters.yearMax : 'Any';
-    chips.push({ label: `Year: ${min} - ${max}`, key: 'yearMin' });
+    chips.push({ label: `Year: ${min} – ${max}`, key: 'yearMin' });
   }
   if (filters.make) {
     chips.push({ label: `Make: ${filters.make}`, key: 'make' });
@@ -362,18 +379,18 @@ export function FilterChips({ filters, onRemove, onClearAll }: FilterChipsProps)
         <button
           key={`${chip.key}-${index}`}
           onClick={() => onRemove(chip.key, chip.value)}
-          className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-sm hover:bg-blue-200 transition-all"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#eef1f8] border border-[#c5cfe8] text-[#1a2a4a] text-xs font-semibold hover:bg-[#dce3f4] transition-all"
         >
           <span>{chip.label}</span>
-          <X className="w-3.5 h-3.5" />
+          <X className="w-3 h-3 text-red-500 flex-shrink-0" />
         </button>
       ))}
       <button
         onClick={onClearAll}
-        className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-red-600/20 border border-red-500/30 text-red-300 text-sm hover:bg-red-600/30 transition-all"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-semibold hover:bg-red-100 transition-all"
       >
         <span>Clear All</span>
-        <X className="w-3.5 h-3.5" />
+        <X className="w-3 h-3" />
       </button>
     </div>
   );
