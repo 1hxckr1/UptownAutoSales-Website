@@ -1,4 +1,4 @@
-import { Award, Users, Heart, Shield, Phone, MapPin, Clock } from 'lucide-react';
+import { Heart, Phone, MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function About() {
@@ -126,32 +126,32 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {[
             {
-              icon: Award,
-              title: 'Quality Selection',
-              description: 'Hand-picked vehicles that meet our strict quality standards',
+              emoji: '🏡',
+              title: 'Proudly Local',
+              description: 'Serving Rome, GA and surrounding communities for over 20 years.',
             },
             {
-              icon: Users,
-              title: 'Expert Team',
-              description: 'Friendly staff with decades of automotive experience',
+              emoji: '🤝',
+              title: 'Relationship First',
+              description: 'We build long-term customers, not one-time sales.',
             },
             {
-              icon: Heart,
-              title: 'Family Owned',
-              description: 'Local business serving Rome, GA since 2005',
+              emoji: '🚗',
+              title: 'Hand-Selected Inventory',
+              description: 'Quality vehicles chosen with care — not volume.',
             },
             {
-              icon: Shield,
-              title: 'Trustworthy',
-              description: 'Honest pricing and transparent financing every time',
+              emoji: '📍',
+              title: 'Convenient & Accessible',
+              description: 'Easy location. Easy process. Easy approval.',
             },
           ].map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:border-red-300 hover:shadow-lg transition-all duration-300 group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-red-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <item.icon className="w-8 h-8 text-red-600" />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-red-50 flex items-center justify-center group-hover:scale-110 transition-transform text-3xl">
+                {item.emoji}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
