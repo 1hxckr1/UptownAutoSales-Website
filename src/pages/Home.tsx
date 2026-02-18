@@ -94,19 +94,13 @@ export default function Home() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                <span className="text-white text-sm font-medium">Bad Credit? No Problem!</span>
-              </div>
-              
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Quality Used Cars in{' '}
                 <span className="text-red-400">Rome, GA</span>
               </h1>
-              
+
               <p className="text-xl text-gray-200 mb-8">
-                Uptown Auto Sales offers a wide selection of quality used vehicles with 
-                flexible financing options. Bad credit OK! In-house financing available.
+                Proudly serving Rome and Floyd County since 2004, Uptown Auto Sales provides reliable vehicles and flexible financing solutions through trusted lending partners.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
