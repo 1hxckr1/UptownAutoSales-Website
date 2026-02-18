@@ -228,7 +228,7 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
         <select
           value={filters.bodyStyle}
           onChange={(e) => updateFilter('bodyStyle', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
         >
           <option value="" className="bg-white text-gray-900">All Body Styles</option>
           {inventoryStats.bodyStyles.map(style => (
@@ -244,7 +244,7 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
         <select
           value={filters.transmission}
           onChange={(e) => updateFilter('transmission', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
         >
           <option value="" className="bg-white text-gray-900">All Transmissions</option>
           {inventoryStats.transmissions.map(trans => (
@@ -260,7 +260,7 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
         <select
           value={filters.drivetrain}
           onChange={(e) => updateFilter('drivetrain', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
         >
           <option value="" className="bg-white text-gray-900">All Drivetrains</option>
           {inventoryStats.drivetrains.map(drive => (
@@ -276,7 +276,7 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
         <select
           value={filters.fuelType}
           onChange={(e) => updateFilter('fuelType', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
         >
           <option value="" className="bg-white text-gray-900">All Fuel Types</option>
           {inventoryStats.fuelTypes.map(fuel => (
@@ -292,7 +292,7 @@ export function InventoryFiltersPanel({ filters, onChange, vehicles, className =
         <select
           value={filters.sort}
           onChange={(e) => updateFilter('sort', e.target.value)}
-          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-500/50"
+          className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
         >
           <option value="newest" className="bg-white text-gray-900">Newest First</option>
           <option value="price_asc" className="bg-white text-gray-900">Price: Low to High</option>
