@@ -22,8 +22,7 @@ export default function About() {
             <img
               src="/IMG_5464.jpeg"
               alt="The Uptown Auto Sales family team"
-              className="w-full rounded-2xl shadow-xl object-cover object-top"
-              style={{ maxHeight: '560px' }}
+              className="w-full rounded-2xl shadow-xl object-contain"
             />
             <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-5 py-3 flex items-center gap-3 shadow-md border border-gray-100">
               <div className="w-2 h-8 rounded-full bg-red-600 flex-shrink-0" />
