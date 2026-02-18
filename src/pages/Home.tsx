@@ -92,7 +92,7 @@ export default function Home() {
               
               <p className="text-xl text-gray-200 mb-8">
                 Uptown Auto Sales offers a wide selection of quality used vehicles with 
-                flexible financing options. Bad credit OK! Buy Here Pay Here available.
+                flexible financing options. Bad credit OK! In-house financing available.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -154,8 +154,8 @@ export default function Home() {
                 <CheckCircle className="w-6 h-6 text-blue-700" />
               </div>
               <div>
-                <div className="font-semibold text-gray-900">Buy Here Pay Here</div>
-                <div className="text-sm text-gray-600">In-house financing</div>
+                <div className="font-semibold text-gray-900">In-House Financing</div>
+                <div className="text-sm text-gray-600">Flexible payment options</div>
               </div>
             </div>
           </div>

@@ -57,7 +57,7 @@ export default function About() {
                 <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
                   <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 </div>
-                <p className="text-gray-600">Buy Here Pay Here – in-house financing available</p>
+                <p className="text-gray-600">In-house financing available</p>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-1">
