@@ -25,7 +25,7 @@ const team: TeamMember[] = [
     photo: '/CE642125-84E8-4CD3-BFAB-2C0CE8119233.jpeg',
     phone: '706-728-5002',
     email: 'chloesmithuptownautosales@gmail.com',
-    objectPosition: 'center top',
+    objectPosition: 'center 5%',
   },
   {
     name: 'T Sproull',
