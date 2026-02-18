@@ -8,6 +8,7 @@ interface TeamMember {
   email: string;
   featured?: boolean;
   objectPosition?: string;
+  imageTranslateY?: string;
 }
 
 const team: TeamMember[] = [
@@ -25,7 +26,8 @@ const team: TeamMember[] = [
     photo: '/CE642125-84E8-4CD3-BFAB-2C0CE8119233.jpeg',
     phone: '706-728-5002',
     email: 'chloesmithuptownautosales@gmail.com',
-    objectPosition: 'center 0%',
+    objectPosition: 'center top',
+    imageTranslateY: '-12%',
   },
   {
     name: 'T Sproull',
@@ -121,8 +123,12 @@ export default function MeetTheTeam() {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  style={{ objectPosition: member.objectPosition ?? 'center top' }}
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  style={{
+                    objectPosition: member.objectPosition ?? 'center top',
+                    height: member.imageTranslateY ? '130%' : '100%',
+                    transform: member.imageTranslateY ? `translateY(${member.imageTranslateY})` : undefined,
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
