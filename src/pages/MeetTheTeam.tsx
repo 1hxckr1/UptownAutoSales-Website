@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin, Star, Heart, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 interface TeamMember {
   name: string;
@@ -186,7 +185,7 @@ export default function MeetTheTeam() {
           <p className="text-gray-500 mb-8 max-w-xl mx-auto">
             Stop by the lot, give us a call, or send us a message. We would love to help you find your next vehicle.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <a
               href="tel:7062959700"
               className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 transition-all shadow-md hover:shadow-lg"
@@ -194,12 +193,6 @@ export default function MeetTheTeam() {
               <Phone className="w-4 h-4" />
               706-295-9700
             </a>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full border-2 border-gray-300 text-gray-700 font-semibold hover:border-red-600 hover:text-red-600 transition-all"
-            >
-              Send a Message
-            </Link>
           </div>
         </div>
 
