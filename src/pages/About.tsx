@@ -185,9 +185,10 @@ export default function About() {
                 <Clock className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-white font-semibold mb-2">Hours</h3>
-              <p className="text-blue-200">
-                Mon-Sat: 9AM-7PM<br />
-                Sunday: Closed
+              <p className="text-blue-200 text-sm leading-relaxed">
+                Mon, Tue, Thu, Fri: 10AM–5:30PM<br />
+                Saturday: 10AM–3:00PM<br />
+                Wed &amp; Sun: Closed
               </p>
             </div>
           </div>
