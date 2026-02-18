@@ -1,50 +1,44 @@
-import { Phone, Mail, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, Star, Heart, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface TeamMember {
   name: string;
   title: string;
-  bio: string;
-  photo?: string;
-  initials: string;
-  color: string;
+  photo: string;
+  phone: string;
+  email: string;
+  featured?: boolean;
 }
 
 const team: TeamMember[] = [
   {
-    name: 'Anthony Owens',
-    title: 'Owner & Dealer Principal',
-    bio: 'Anthony founded Uptown Auto Sales in 2004 with a simple mission: treat every customer like family. With over 20 years in the automotive industry, he personally oversees every vehicle that comes through the lot to ensure quality you can count on.',
-    initials: 'AO',
-    color: 'bg-red-600',
+    name: 'Zach Smith',
+    title: 'Owner',
+    photo: '/IMG_1377.jpeg',
+    phone: '706-728-6681',
+    email: 'zachlsmith@att.net',
+    featured: true,
   },
   {
-    name: 'Sales Team',
-    title: 'Sales Consultants',
-    bio: 'Our sales team is here to guide you — no pressure, no games. We take the time to understand what you need and match you with the right vehicle at the right price.',
-    initials: 'ST',
-    color: 'bg-blue-700',
+    name: 'Chloe Smith',
+    title: 'Marketing',
+    photo: '/CE642125-84E8-4CD3-BFAB-2C0CE8119233.jpeg',
+    phone: '706-728-5002',
+    email: 'chloesmithuptownautosales@gmail.com',
   },
   {
-    name: 'Finance Team',
-    title: 'Finance & Credit Specialists',
-    bio: 'Our finance specialists work with a wide network of lenders to find you the best possible rate. Whether your credit is great or needs work, we will find a solution that fits your budget.',
-    initials: 'FT',
-    color: 'bg-gray-700',
-  },
-  {
-    name: 'Service Team',
-    title: 'Reconditioning & Detail',
-    bio: 'Every vehicle on our lot goes through a thorough inspection and reconditioning process before it ever reaches a customer. Our team takes pride in delivering clean, well-maintained vehicles.',
-    initials: 'SV',
-    color: 'bg-red-800',
+    name: 'T Sproull',
+    title: 'Sales',
+    photo: '/IMG_5457.jpeg',
+    phone: '770-546-5446',
+    email: 'jtsproull@me.com',
   },
 ];
 
 export default function MeetTheTeam() {
   return (
     <div className="min-h-screen bg-white pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Hero */}
         <div className="text-center mb-16">
@@ -53,26 +47,113 @@ export default function MeetTheTeam() {
             Meet The <span className="text-red-600">Team</span>
           </h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            The faces behind Uptown Auto Sales. We are a tight-knit group of car people who genuinely care about
-            helping our community get into great vehicles.
+            The faces behind Uptown Auto Sales. We are a tight-knit team who genuinely care about
+            helping our community get into great vehicles at fair prices.
           </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {team.map((member) => (
+        {/* Featured Owner */}
+        <div className="mb-10">
+          {team.filter(m => m.featured).map((member) => (
             <div
               key={member.name}
-              className="group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+              className="relative bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
             >
-              <div className="flex items-start gap-6 p-8">
-                <div className={`${member.color} w-20 h-20 rounded-2xl flex-shrink-0 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                  <span className="text-white text-2xl font-bold">{member.initials}</span>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-red-500 to-blue-700" />
+              <div className="flex flex-col md:flex-row items-center gap-0">
+                <div className="w-full md:w-80 flex-shrink-0 relative overflow-hidden" style={{ height: '420px' }}>
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white hidden md:block" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">{member.title}</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
+                <div className="flex-1 p-8 md:p-12 text-center md:text-left">
+                  <span className="inline-block px-3 py-1 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+                    {member.title}
+                  </span>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-2">{member.name}</h2>
+                  <p className="text-gray-500 mb-8 leading-relaxed">
+                    Leading Uptown Auto Sales with a commitment to honest deals, quality vehicles, and treating every customer like a neighbor.
+                  </p>
+                  <div className="space-y-3">
+                    <a
+                      href={`tel:${member.phone.replace(/-/g, '')}`}
+                      className="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors group justify-center md:justify-start"
+                    >
+                      <span className="w-9 h-9 rounded-full bg-gray-100 group-hover:bg-red-50 flex items-center justify-center transition-colors flex-shrink-0">
+                        <Phone className="w-4 h-4" />
+                      </span>
+                      <span className="font-medium">{member.phone}</span>
+                    </a>
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors group justify-center md:justify-start"
+                    >
+                      <span className="w-9 h-9 rounded-full bg-gray-100 group-hover:bg-red-50 flex items-center justify-center transition-colors flex-shrink-0">
+                        <Mail className="w-4 h-4" />
+                      </span>
+                      <span className="font-medium">{member.email}</span>
+                    </a>
+                    <div className="flex items-center gap-3 text-gray-500 justify-center md:justify-start">
+                      <span className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-4 h-4" />
+                      </span>
+                      <span>Uptown Auto Sales — Rome, GA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Rest of Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+          {team.filter(m => !m.featured).map((member) => (
+            <div
+              key={member.name}
+              className="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
+            >
+              <div className="relative overflow-hidden" style={{ height: '340px' }}>
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="inline-block px-2.5 py-1 bg-red-600 text-white text-xs font-bold uppercase tracking-widest rounded-full mb-2">
+                    {member.title}
+                  </span>
+                  <h3 className="text-2xl font-bold text-white">{member.name}</h3>
+                </div>
+              </div>
+              <div className="p-6 space-y-3">
+                <a
+                  href={`tel:${member.phone.replace(/-/g, '')}`}
+                  className="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors group/link"
+                >
+                  <span className="w-8 h-8 rounded-full bg-gray-100 group-hover/link:bg-red-50 flex items-center justify-center transition-colors flex-shrink-0">
+                    <Phone className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="font-medium text-sm">{member.phone}</span>
+                </a>
+                <a
+                  href={`mailto:${member.email}`}
+                  className="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors group/link"
+                >
+                  <span className="w-8 h-8 rounded-full bg-gray-100 group-hover/link:bg-red-50 flex items-center justify-center transition-colors flex-shrink-0">
+                    <Mail className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="font-medium text-sm truncate">{member.email}</span>
+                </a>
+                <div className="flex items-center gap-3 text-gray-400">
+                  <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="text-sm">Uptown Auto Sales</span>
                 </div>
               </div>
             </div>
@@ -85,8 +166,8 @@ export default function MeetTheTeam() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             {[
               { icon: Star, label: 'Integrity', desc: 'Honest pricing and transparent deals — every time.' },
-              { icon: Phone, label: 'Accessibility', desc: 'Real people answering real questions. Call us anytime.' },
-              { icon: Mail, label: 'Community', desc: 'Proudly rooted in Rome, Georgia since 2004.' },
+              { icon: Heart, label: 'Community', desc: 'Proudly rooted in Rome, Georgia and here to serve our neighbors.' },
+              { icon: Users, label: 'No Pressure', desc: 'Real people, real answers. We work for you, not the commission.' },
             ].map(({ icon: Icon, label, desc }) => (
               <div key={label} className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
