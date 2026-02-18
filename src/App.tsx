@@ -17,6 +17,7 @@ import VehicleInquiry from './pages/VehicleInquiry';
 import Financing from './pages/Financing';
 import TradeInPage from './pages/TradeIn';
 import About from './pages/About';
+import MeetTheTeam from './pages/MeetTheTeam';
 import Contact from './pages/Contact';
 import Login from './pages/admin/Login';
 import InventorySync from './pages/admin/InventorySync';
@@ -91,6 +92,7 @@ function App() {
                 <Route path="/financing" element={<Financing />} />
                 <Route path="/trade-in" element={<TradeInPage />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/meet-the-team" element={<MeetTheTeam />} />
                 <Route path="/contact" element={<Contact />} />
               </Route>
             </Routes>
