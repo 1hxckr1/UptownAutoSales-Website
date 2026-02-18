@@ -1,34 +1,13 @@
 import { Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useDealer } from '../contexts/DealerContext';
 import { trackCtaClick } from '../lib/analytics';
 
 export default function Footer() {
-  const { dealer } = useDealer();
 
   return (
     <footer className="relative bg-white border-t border-red-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
-              {dealer?.logo_url ? (
-                <img src={dealer.logo_url} alt={dealer.name} className="h-12 w-auto" />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-red-600 to-red-700 flex items-center justify-center shadow-lg shadow-red-500/30">
-                  <span className="text-white font-bold text-xl">U</span>
-                </div>
-              )}
-              <div>
-                <div className="text-gray-900 font-bold text-xl">Uptown Auto Sales</div>
-                <div className="text-red-600 text-xs tracking-widest">Quality Used Cars</div>
-              </div>
-            </div>
-            <p className="text-gray-600 text-sm mb-4">
-              Your trusted dealership in Rome, GA. Quality vehicles, honest pricing, and exceptional service. Bad credit OK!
-            </p>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-gray-900 font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
@@ -78,7 +57,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center space-x-4">
               <p className="text-gray-500 text-xs">
-                Powered by{' '}
+                Built From Scratch by{' '}
                 <a
                   href="https://fender-ai.com"
                   target="_blank"
@@ -88,12 +67,6 @@ export default function Footer() {
                   Fender-AI
                 </a>
               </p>
-              <Link
-                to="/admin/login"
-                className="text-gray-400 hover:text-gray-600 text-xs transition-colors"
-              >
-                Admin
-              </Link>
             </div>
           </div>
         </div>
