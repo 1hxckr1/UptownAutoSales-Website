@@ -101,7 +101,7 @@ export default function Reviews() {
                 <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-2xl font-bold text-gray-900">4.4</span>
+            <span className="text-2xl font-bold text-gray-900">4.7</span>
             <span className="text-gray-500 text-sm">Google Rating</span>
           </div>
           <div className="h-1 w-24 bg-red-600 mx-auto"></div>
