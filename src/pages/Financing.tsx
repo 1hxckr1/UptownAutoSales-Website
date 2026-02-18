@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Shield, Clock, CheckCircle, Plus, Trash2, Car, Search, ChevronDown, Loader2 } from 'lucide-react';
+import { CheckCircle, Plus, Trash2, Car, Search, ChevronDown, Loader2 } from 'lucide-react';
 import { FenderVehicle, fenderApi } from '../lib/fenderApi';
 import { trackLeadSubmission } from '../lib/analytics';
 import { useInventory } from '../lib/apiHooks';
@@ -434,29 +434,29 @@ export default function Financing() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-            Get{' '}
-            <span className="text-red-600">Approved</span>
-          </h1>
-          <p className="text-gray-600 text-lg">Fast, simple financing with transparent rates. No pressure, just possibilities.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <Clock className="w-12 h-12 text-blue-700 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">Fast Approval</h3>
-            <p className="text-gray-600 text-sm">Get a decision in minutes, not days</p>
-          </div>
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <Shield className="w-12 h-12 text-red-600 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">Secure Process</h3>
-            <p className="text-gray-600 text-sm">Your information is always protected</p>
-          </div>
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <CheckCircle className="w-12 h-12 text-blue-700 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">All Credit Welcome</h3>
-            <p className="text-gray-600 text-sm">Bad credit or no credit, we can help</p>
+        <div className="relative bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden mb-12">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-red-500 to-blue-700" />
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-700 via-blue-600 to-red-600" />
+          <div className="px-8 py-10 md:px-14 md:py-12">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">
+              Financing Made Simple<br className="hidden md:block" />{' '}
+              <span className="text-red-600">in Rome, GA</span>
+            </h1>
+            <p className="text-gray-500 text-base mb-8">No pressure. No surprises. Just a straightforward path to your next vehicle.</p>
+            <ul className="space-y-3">
+              {[
+                'No hidden fees',
+                'Transparent rates',
+                'Real people, real support',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-gray-800 font-medium text-base">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-red-50 border border-red-200 flex items-center justify-center">
+                    <CheckCircle className="w-3.5 h-3.5 text-red-600" />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
