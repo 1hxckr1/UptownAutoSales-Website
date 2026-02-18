@@ -125,6 +125,7 @@ export default function Financing() {
   });
 
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const addIncomeSource = () => {
     if (incomeSources.length < 4) {
@@ -1089,21 +1090,50 @@ export default function Financing() {
               </div>
             </div>
 
+            {/* Authorization Disclosure */}
+            <div className="border border-gray-200 rounded-xl p-6 bg-gray-50">
+              <h2 className="text-base font-bold text-gray-900 mb-3">Authorization &amp; Certification</h2>
+              <div className="text-sm text-gray-600 leading-relaxed space-y-3 mb-5">
+                <p>
+                  By submitting this application, I authorize the dealership and any financing sources to which this application may be presented to obtain my consumer credit report from one or more credit reporting agencies for the purpose of evaluating my creditworthiness.
+                </p>
+                <p>
+                  I certify that all information provided in this application is true, accurate, and complete to the best of my knowledge. I understand that I am submitting this information directly to the dealership identified in this application and acknowledge that my information may be shared in accordance with the dealership's privacy policy, where applicable.
+                </p>
+                <p>
+                  I authorize the dealership and any financial institutions or service providers acting on its behalf to retain this application and to verify my credit history, employment, income, and related information as necessary to evaluate financing eligibility. I further authorize the dealership and/or any potential financing sources to obtain consumer credit reports and verify employment information as they deem appropriate in connection with this application.
+                </p>
+              </div>
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                  className="mt-0.5 w-5 h-5 flex-shrink-0 rounded border-gray-300 text-red-600 focus:ring-2 focus:ring-red-500/50 cursor-pointer"
+                />
+                <span className="text-sm font-medium text-gray-800 group-hover:text-gray-900 transition-colors">
+                  I agree to the authorization and certification above
+                </span>
+              </label>
+            </div>
+
             {/* Submit */}
-            <div className="pt-6">
+            <div className="pt-2">
               <button
                 type="submit"
-                disabled={formStatus === 'loading'}
+                disabled={formStatus === 'loading' || !agreedToTerms}
                 className="w-full px-8 py-4 rounded-lg bg-red-600 text-white font-semibold shadow-lg hover:bg-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {formStatus === 'loading' ? 'Submitting...' : 'Submit Application'}
               </button>
+              {!agreedToTerms && (
+                <p className="text-gray-400 text-sm text-center mt-3">
+                  You must agree to the authorization above before submitting.
+                </p>
+              )}
               {formStatus === 'error' && (
                 <p className="text-red-400 text-sm text-center mt-4">Something went wrong. Please try again.</p>
               )}
-              <p className="text-gray-500 text-sm text-center mt-4">
-                By submitting, you agree to our terms and authorize us to check your credit.
-              </p>
             </div>
           </form>
         </div>
