@@ -19,6 +19,7 @@ import TradeInPage from './pages/TradeIn';
 import About from './pages/About';
 import MeetTheTeam from './pages/MeetTheTeam';
 import Contact from './pages/Contact';
+import TermsAndConditions from './pages/TermsAndConditions';
 import Login from './pages/admin/Login';
 import InventorySync from './pages/admin/InventorySync';
 import CarfaxManagement from './pages/admin/CarfaxManagement';
@@ -94,6 +95,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/meet-the-team" element={<MeetTheTeam />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/terms" element={<TermsAndConditions />} />
               </Route>
             </Routes>
           </div>

@@ -56,6 +56,10 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Uptown Auto Sales. All rights reserved.
             </p>
             <div className="flex items-center space-x-4">
+              <Link to="/terms" className="text-gray-500 text-xs hover:text-red-600 transition-colors">
+                Terms &amp; Conditions
+              </Link>
+              <span className="text-gray-300 text-xs">|</span>
               <p className="text-gray-500 text-xs">
                 Built From Scratch by{' '}
                 <a
