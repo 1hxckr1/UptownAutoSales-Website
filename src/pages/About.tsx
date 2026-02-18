@@ -11,9 +11,63 @@ export default function About() {
             About <span className="text-red-600">Uptown Auto Sales</span>
           </h1>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Your trusted hometown dealership in Rome, Georgia. We've been serving the community 
-            with quality vehicles, honest pricing, and exceptional customer service since 2005.
+            Your trusted hometown dealership in Rome, Georgia. Proudly serving Floyd County since 2004.
           </p>
+        </div>
+
+        {/* Family Photo + Story */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-red-100 via-white to-blue-100 -z-10" />
+            <img
+              src="/IMG_5464.jpeg"
+              alt="The Uptown Auto Sales family team"
+              className="w-full rounded-2xl shadow-xl object-cover object-top"
+              style={{ maxHeight: '560px' }}
+            />
+            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-5 py-3 flex items-center gap-3 shadow-md border border-gray-100">
+              <div className="w-2 h-8 rounded-full bg-red-600 flex-shrink-0" />
+              <div>
+                <p className="text-xs font-bold text-[#1a2a4a] uppercase tracking-widest">Family Owned &amp; Operated</p>
+                <p className="text-sm text-gray-600">Proudly serving Rome, GA since 2004</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200">
+              <Heart className="w-4 h-4 text-red-600" />
+              <span className="text-sm font-semibold text-red-700">Our Story</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              When you buy from Uptown, you are joining our <span className="text-red-600">family.</span>
+            </h2>
+            <div className="space-y-4 text-gray-600 leading-relaxed text-[1.05rem]">
+              <p>
+                At Uptown Auto Sales, we are proudly family owned and operated, and we believe that makes all the difference. We know purchasing a vehicle can feel overwhelming, which is why our knowledgeable, friendly team goes the extra mile to make the process easy and enjoyable.
+              </p>
+              <p>
+                Whether you are shopping for a new or pre-owned vehicle, we take the time to listen, understand your needs, and help you find the perfect fit for your lifestyle and budget.
+              </p>
+              <p>
+                With our dedication to excellent customer service and a wide selection of high quality vehicles, we are confident you will drive away feeling taken care of. Uptown Auto Sales has proudly served Rome, GA and Floyd County since 2004 — and we cannot wait to serve you next.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <Link
+                to="/inventory"
+                className="px-7 py-3 rounded-lg bg-red-600 text-white font-semibold shadow-md hover:bg-red-700 transition-all text-center"
+              >
+                Browse Inventory
+              </Link>
+              <Link
+                to="/contact"
+                className="px-7 py-3 rounded-lg bg-white border-2 border-[#1a2a4a] text-[#1a2a4a] font-semibold hover:bg-blue-50 transition-all text-center"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Mission & Promise */}
