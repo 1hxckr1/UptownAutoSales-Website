@@ -14,7 +14,7 @@ const team: TeamMember[] = [
   {
     name: 'Zach Smith',
     title: 'Owner',
-    photo: '/IMG_1377.jpeg',
+    photo: '/IMG_5457.jpeg',
     phone: '706-728-6681',
     email: 'zachlsmith@att.net',
     featured: true,
@@ -29,7 +29,7 @@ const team: TeamMember[] = [
   {
     name: 'T Sproull',
     title: 'Sales',
-    photo: '/IMG_5457.jpeg',
+    photo: '/IMG_1377.jpeg',
     phone: '770-546-5446',
     email: 'jtsproull@me.com',
   },
