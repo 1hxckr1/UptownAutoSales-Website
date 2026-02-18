@@ -66,16 +66,30 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-16">
         <div className="relative h-[600px] flex items-center">
-          {/* Background Image */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: 'url(https://images.pexels.com/photos/3802508/pexels-photo-3802508.jpeg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-red-900/70"></div>
+          {/* American flag inspired background */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Base gradient: red → white → blue */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-white to-blue-800" />
+
+            {/* Soft color wash to unify and tone down the white center */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-900/60 via-slate-100/10 to-blue-900/70" />
+
+            {/* Stars texture — subtle SVG pattern at low opacity */}
+            <div
+              className="absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ctext x='10' y='20' font-size='14' fill='%23ffffff'%3E%E2%98%85%3C/text%3E%3Ctext x='35' y='45' font-size='10' fill='%23ffffff'%3E%E2%98%85%3C/text%3E%3Ctext x='5' y='50' font-size='8' fill='%23ffffff'%3E%E2%98%85%3C/text%3E%3Ctext x='45' y='15' font-size='12' fill='%23ffffff'%3E%E2%98%85%3C/text%3E%3C/svg%3E")`,
+                backgroundRepeat: 'repeat',
+              }}
+            />
+
+            {/* Horizontal stripe hints — very faint */}
+            <div className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 28px, #ffffff 28px, #ffffff 30px)',
+            }} />
+
+            {/* Dark left vignette for text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-950/40 to-transparent" />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
