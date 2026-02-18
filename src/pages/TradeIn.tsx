@@ -110,23 +110,6 @@ export default function TradeInPage() {
           <p className="text-gray-600 text-lg">Quick appraisal request. Simple paperwork. Fast turnaround.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <Car className="w-12 h-12 text-blue-700 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">Easy Process</h3>
-            <p className="text-gray-600 text-sm">A few details and you're done</p>
-          </div>
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <DollarSign className="w-12 h-12 text-red-600 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">Fair Value</h3>
-            <p className="text-gray-600 text-sm">We price trades competitively</p>
-          </div>
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
-            <CheckCircle className="w-12 h-12 text-blue-700 mx-auto mb-4" />
-            <h3 className="text-gray-900 font-semibold mb-2">Quick Response</h3>
-            <p className="text-gray-600 text-sm">We'll contact you shortly</p>
-          </div>
-        </div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm">
           <form onSubmit={handleSubmit} className="space-y-8">
