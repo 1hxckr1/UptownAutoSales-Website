@@ -43,7 +43,7 @@ export default function Footer() {
                   <MapPin className="w-4 h-4 text-blue-700" />
                 </div>
                 <span className="text-sm">
-                  Rome, GA 30161
+                  1106 Shorter Ave NW, Rome, GA 30165
                 </span>
               </div>
             </div>
