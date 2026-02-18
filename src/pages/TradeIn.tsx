@@ -86,10 +86,10 @@ export default function TradeInPage() {
               Thank you for your trade-in request. We'll evaluate your vehicle and contact you shortly.
             </p>
             <a
-              href="tel:7062377668"
+              href="tel:7062959700"
               className="inline-flex items-center space-x-2 px-8 py-4 rounded-lg bg-red-600 text-white font-semibold shadow-lg hover:bg-red-700 transition-all duration-300"
             >
-              <span>Call Us Now: 706-237-7668</span>
+              <span>Call Us Now: 706-295-9700</span>
             </a>
           </div>
         </div>
