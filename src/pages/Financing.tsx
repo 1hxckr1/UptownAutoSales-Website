@@ -409,19 +409,19 @@ export default function Financing() {
 
   if (formStatus === 'success') {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-24 pb-12">
+      <div className="min-h-screen bg-gray-50 pt-24 pb-12">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-green-500/10 to-blue-500/10 backdrop-blur-xl rounded-3xl p-12 border border-white/10 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center">
-              <CheckCircle className="w-10 h-10 text-green-400" />
+          <div className="bg-white rounded-3xl p-12 border border-gray-200 shadow-sm text-center">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+              <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <h1 className="text-4xl font-bold text-white mb-4">Application Submitted!</h1>
-            <p className="text-gray-400 text-lg mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Application Submitted!</h1>
+            <p className="text-gray-600 text-lg mb-8">
               Thank you for applying. Our finance team will review your application and contact you within 24 hours.
             </p>
             <a
               href="tel:7062377668"
-              className="inline-flex items-center space-x-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-blue-500/50 hover:shadow-blue-500/80 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center space-x-2 px-8 py-4 rounded-lg bg-red-600 text-white font-semibold shadow-lg hover:bg-red-700 transition-all duration-300"
             >
               <span>Call Us Now: 706-237-7668</span>
             </a>
@@ -432,35 +432,35 @@ export default function Financing() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black pt-24 pb-12">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             Get{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Approved</span>
+            <span className="text-red-600">Approved</span>
           </h1>
-          <p className="text-gray-400 text-lg">Fast, simple financing with transparent rates. No pressure, just possibilities.</p>
+          <p className="text-gray-600 text-lg">Fast, simple financing with transparent rates. No pressure, just possibilities.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 text-center">
-            <Clock className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-            <h3 className="text-white font-semibold mb-2">Fast Approval</h3>
-            <p className="text-gray-400 text-sm">Get a decision in minutes, not days</p>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
+            <Clock className="w-12 h-12 text-blue-700 mx-auto mb-4" />
+            <h3 className="text-gray-900 font-semibold mb-2">Fast Approval</h3>
+            <p className="text-gray-600 text-sm">Get a decision in minutes, not days</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 text-center">
-            <Shield className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-            <h3 className="text-white font-semibold mb-2">Secure Process</h3>
-            <p className="text-gray-400 text-sm">Your information is always protected</p>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
+            <Shield className="w-12 h-12 text-red-600 mx-auto mb-4" />
+            <h3 className="text-gray-900 font-semibold mb-2">Secure Process</h3>
+            <p className="text-gray-600 text-sm">Your information is always protected</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 text-center">
-            <CheckCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-            <h3 className="text-white font-semibold mb-2">All Credit Welcome</h3>
-            <p className="text-gray-400 text-sm">Bad credit or no credit, we can help</p>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm text-center">
+            <CheckCircle className="w-12 h-12 text-blue-700 mx-auto mb-4" />
+            <h3 className="text-gray-900 font-semibold mb-2">All Credit Welcome</h3>
+            <p className="text-gray-600 text-sm">Bad credit or no credit, we can help</p>
           </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10">
+        <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm">
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* honeypot */}
             <input
@@ -475,7 +475,7 @@ export default function Financing() {
 
             {/* Personal Information */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Personal Information</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Personal Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -483,14 +483,14 @@ export default function Financing() {
                   value={formData.first_name}
                   onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
                   placeholder="Middle Name"
                   value={formData.middle_name}
                   onChange={(e) => setFormData({ ...formData, middle_name: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
@@ -498,14 +498,14 @@ export default function Financing() {
                   value={formData.last_name}
                   onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
                   placeholder="Suffix (Jr., Sr., III, etc.)"
                   value={formData.suffix}
                   onChange={(e) => setFormData({ ...formData, suffix: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
@@ -523,14 +523,14 @@ export default function Financing() {
                     setFormData({ ...formData, ssn: formatted });
                   }}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="date"
                   value={formData.date_of_birth}
                   onChange={(e) => setFormData({ ...formData, date_of_birth: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 [color-scheme:dark]"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="tel"
@@ -538,21 +538,21 @@ export default function Financing() {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="email"
                   placeholder="Email Address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
               </div>
             </div>
 
             {/* Current Address */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Current Address</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Current Address</h2>
               <div className="grid grid-cols-1 gap-4">
                 <input
                   type="text"
@@ -560,14 +560,14 @@ export default function Financing() {
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
                   placeholder="Unit, Apt, Suite (optional)"
                   value={formData.address_unit}
                   onChange={(e) => setFormData({ ...formData, address_unit: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -577,7 +577,7 @@ export default function Financing() {
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="text"
@@ -585,7 +585,7 @@ export default function Financing() {
                     value={formData.state}
                     onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="text"
@@ -593,7 +593,7 @@ export default function Financing() {
                     value={formData.zip}
                     onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                 </div>
 
@@ -605,7 +605,7 @@ export default function Financing() {
                     value={formData.years_at_address}
                     onChange={(e) => setFormData({ ...formData, years_at_address: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="number"
@@ -615,7 +615,7 @@ export default function Financing() {
                     value={formData.months_at_address}
                     onChange={(e) => setFormData({ ...formData, months_at_address: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -624,8 +624,8 @@ export default function Financing() {
             {/* Previous Address */}
             {needsPreviousAddress && (
               <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Previous Address</h2>
-                <p className="text-gray-400 text-sm mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Previous Address</h2>
+                <p className="text-gray-600 text-sm mb-6">
                   Required since you&apos;ve been at current address less than 2 years
                 </p>
                 <div className="grid grid-cols-1 gap-4">
@@ -635,14 +635,14 @@ export default function Financing() {
                     value={formData.previous_address}
                     onChange={(e) => setFormData({ ...formData, previous_address: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="text"
                     placeholder="Previous Unit, Apt, Suite (optional)"
                     value={formData.previous_address_unit}
                     onChange={(e) => setFormData({ ...formData, previous_address_unit: e.target.value })}
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
@@ -651,7 +651,7 @@ export default function Financing() {
                       value={formData.previous_city}
                       onChange={(e) => setFormData({ ...formData, previous_city: e.target.value })}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                     <input
                       type="text"
@@ -659,7 +659,7 @@ export default function Financing() {
                       value={formData.previous_state}
                       onChange={(e) => setFormData({ ...formData, previous_state: e.target.value })}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                     <input
                       type="text"
@@ -667,7 +667,7 @@ export default function Financing() {
                       value={formData.previous_zip}
                       onChange={(e) => setFormData({ ...formData, previous_zip: e.target.value })}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                 </div>
@@ -676,24 +676,24 @@ export default function Financing() {
 
             {/* Housing Info */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Housing Information</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Housing Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <select
                   value={formData.housing_status}
                   onChange={(e) => setFormData({ ...formData, housing_status: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 >
-                  <option value="" className="bg-gray-900 text-white">
+                  <option value="" className="bg-white text-gray-900">
                     Housing Status *
                   </option>
-                  <option value="Rent" className="bg-gray-900 text-white">
+                  <option value="Rent" className="bg-white text-gray-900">
                     Rent
                   </option>
-                  <option value="Own" className="bg-gray-900 text-white">
+                  <option value="Own" className="bg-white text-gray-900">
                     Own
                   </option>
-                  <option value="Other" className="bg-gray-900 text-white">
+                  <option value="Other" className="bg-white text-gray-900">
                     Other
                   </option>
                 </select>
@@ -703,14 +703,14 @@ export default function Financing() {
                   value={formData.monthly_housing_payment}
                   onChange={(e) => setFormData({ ...formData, monthly_housing_payment: e.target.value })}
                   required
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
               </div>
             </div>
 
             {/* Employment & Income */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Employment &amp; Income</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Employment &amp; Income</h2>
 
               <input
                 type="text"
@@ -718,13 +718,13 @@ export default function Financing() {
                 value={formData.bank_name}
                 onChange={(e) => setFormData({ ...formData, bank_name: e.target.value })}
                 required
-                className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 w-full mb-6"
+                className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 w-full mb-6"
               />
 
               {incomeSources.map((income, index) => (
-                <div key={index} className="mb-8 p-6 rounded-xl bg-white/5 border border-white/10">
+                <div key={index} className="mb-8 p-6 rounded-xl bg-gray-50 border border-gray-200">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-white">Income Source {index + 1}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">Income Source {index + 1}</h3>
                     {incomeSources.length > 1 && (
                       <button
                         type="button"
@@ -743,7 +743,7 @@ export default function Financing() {
                       value={income.job_title}
                       onChange={(e) => updateIncomeSource(index, 'job_title', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                     <input
                       type="text"
@@ -751,19 +751,19 @@ export default function Financing() {
                       value={income.employer_name}
                       onChange={(e) => updateIncomeSource(index, 'employer_name', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
 
                     <select
                       value={income.employer_type}
                       onChange={(e) => updateIncomeSource(index, 'employer_type', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     >
-                      <option value="company" className="bg-gray-900 text-white">
+                      <option value="company" className="bg-white text-gray-900">
                         Work for Company
                       </option>
-                      <option value="self_employed" className="bg-gray-900 text-white">
+                      <option value="self_employed" className="bg-white text-gray-900">
                         Self-Employed
                       </option>
                     </select>
@@ -772,12 +772,12 @@ export default function Financing() {
                       value={income.tax_type}
                       onChange={(e) => updateIncomeSource(index, 'tax_type', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     >
-                      <option value="w2" className="bg-gray-900 text-white">
+                      <option value="w2" className="bg-white text-gray-900">
                         W-2
                       </option>
-                      <option value="1099" className="bg-gray-900 text-white">
+                      <option value="1099" className="bg-white text-gray-900">
                         1099
                       </option>
                     </select>
@@ -786,12 +786,12 @@ export default function Financing() {
                       value={income.pay_type}
                       onChange={(e) => updateIncomeSource(index, 'pay_type', e.target.value as IncomeSource['pay_type'])}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     >
-                      <option value="salary" className="bg-gray-900 text-white">
+                      <option value="salary" className="bg-white text-gray-900">
                         Salary (Monthly)
                       </option>
-                      <option value="hourly" className="bg-gray-900 text-white">
+                      <option value="hourly" className="bg-white text-gray-900">
                         Hourly
                       </option>
                     </select>
@@ -803,7 +803,7 @@ export default function Financing() {
                         value={income.amount}
                         onChange={(e) => updateIncomeSource(index, 'amount', e.target.value)}
                         required
-                        className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                        className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                       />
                     ) : (
                       <>
@@ -814,7 +814,7 @@ export default function Financing() {
                           value={income.amount}
                           onChange={(e) => updateIncomeSource(index, 'amount', e.target.value)}
                           required
-                          className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                          className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                         />
                         <input
                           type="number"
@@ -822,7 +822,7 @@ export default function Financing() {
                           value={income.hours_per_week}
                           onChange={(e) => updateIncomeSource(index, 'hours_per_week', e.target.value)}
                           required
-                          className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                          className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                         />
                       </>
                     )}
@@ -834,7 +834,7 @@ export default function Financing() {
                       value={income.years_at_job}
                       onChange={(e) => updateIncomeSource(index, 'years_at_job', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                     <input
                       type="number"
@@ -844,7 +844,7 @@ export default function Financing() {
                       value={income.months_at_job}
                       onChange={(e) => updateIncomeSource(index, 'months_at_job', e.target.value)}
                       required
-                      className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                      className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                     />
                   </div>
                 </div>
@@ -854,7 +854,7 @@ export default function Financing() {
                 <button
                   type="button"
                   onClick={addIncomeSource}
-                  className="w-full px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full px-6 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
                 >
                   <Plus className="w-5 h-5" />
                   <span>Add Another Income Source</span>
@@ -865,8 +865,8 @@ export default function Financing() {
             {/* Previous Employment */}
             {needsPreviousEmployment && (
               <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Previous Employment</h2>
-                <p className="text-gray-400 text-sm mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Previous Employment</h2>
+                <p className="text-gray-600 text-sm mb-6">
                   Required since you&apos;ve been at current job less than 2 years
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -876,7 +876,7 @@ export default function Financing() {
                     value={previousEmployment.employer_name}
                     onChange={(e) => setPreviousEmployment({ ...previousEmployment, employer_name: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="text"
@@ -884,7 +884,7 @@ export default function Financing() {
                     value={previousEmployment.job_title}
                     onChange={(e) => setPreviousEmployment({ ...previousEmployment, job_title: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="number"
@@ -893,7 +893,7 @@ export default function Financing() {
                     value={previousEmployment.years_worked}
                     onChange={(e) => setPreviousEmployment({ ...previousEmployment, years_worked: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                   <input
                     type="number"
@@ -903,7 +903,7 @@ export default function Financing() {
                     value={previousEmployment.months_worked}
                     onChange={(e) => setPreviousEmployment({ ...previousEmployment, months_worked: e.target.value })}
                     required
-                    className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                    className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -912,9 +912,9 @@ export default function Financing() {
             {/* Vehicle of Interest (Optional) */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <Car className="w-6 h-6 text-blue-400" />
-                  Vehicle of Interest <span className="text-sm text-gray-400 font-normal">(Optional)</span>
+                <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                  <Car className="w-6 h-6 text-blue-700" />
+                  Vehicle of Interest <span className="text-sm text-gray-500 font-normal">(Optional)</span>
                 </h2>
                 {vehicleInterest.enabled && vehicleInterest.vehicle_id && (
                   <button
@@ -931,7 +931,7 @@ export default function Financing() {
                 )}
               </div>
 
-              <label className="flex items-center gap-3 text-gray-300 mb-6 cursor-pointer group">
+              <label className="flex items-center gap-3 text-gray-600 mb-6 cursor-pointer group">
                 <input
                   type="checkbox"
                   checked={vehicleInterest.enabled}
@@ -939,9 +939,9 @@ export default function Financing() {
                     setVehicleInterest((prev) => ({ ...prev, enabled: e.target.checked }));
                     if (!e.target.checked) setVehicleValidationError(null);
                   }}
-                  className="w-5 h-5 rounded border-white/20 bg-white/5 text-blue-500 focus:ring-2 focus:ring-blue-500/50 cursor-pointer"
+                  className="w-5 h-5 rounded border-gray-300 bg-white text-red-600 focus:ring-2 focus:ring-red-500/50 cursor-pointer"
                 />
-                <span className="group-hover:text-white transition-colors">Add a vehicle I&apos;m interested in</span>
+                <span className="group-hover:text-gray-900 transition-colors">Add a vehicle I&apos;m interested in</span>
               </label>
 
               {vehicleInterest.enabled && (
@@ -962,15 +962,15 @@ export default function Financing() {
                           }
                         }}
                         onFocus={() => setShowVehicleDropdown(true)}
-                        className="w-full pl-11 pr-10 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
+                        className="w-full pl-11 pr-10 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                       />
                       <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none transition-transform ${showVehicleDropdown ? 'rotate-180' : ''}`} />
                     </div>
 
                     {showVehicleDropdown && (
-                      <div className="absolute z-20 mt-2 w-full max-h-72 overflow-auto rounded-xl border border-white/10 bg-black/95 backdrop-blur-xl shadow-2xl">
+                      <div className="absolute z-20 mt-2 w-full max-h-72 overflow-auto rounded-xl border border-gray-200 bg-white shadow-xl">
                         {loadingInventory ? (
-                          <div className="flex items-center justify-center gap-2 px-4 py-6 text-gray-400">
+                          <div className="flex items-center justify-center gap-2 px-4 py-6 text-gray-500">
                             <Loader2 className="w-4 h-4 animate-spin" />
                             <span className="text-sm">Loading inventory...</span>
                           </div>
@@ -981,7 +981,7 @@ export default function Financing() {
                         ) : (
                           <>
                             {filteredInventory.length > 25 && (
-                              <div className="px-4 py-2 text-xs text-gray-500 border-b border-white/5">
+                              <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
                                 Showing 25 of {filteredInventory.length} results — type more to narrow down
                               </div>
                             )}
@@ -995,13 +995,13 @@ export default function Financing() {
                                   onClick={() => selectInventoryVehicle(vehicle)}
                                   className={`w-full text-left px-4 py-3 transition-colors flex items-center justify-between ${
                                     isSelected
-                                      ? 'bg-blue-500/20 text-blue-300'
-                                      : 'text-white hover:bg-white/10'
+                                      ? 'bg-red-50 text-red-700'
+                                      : 'text-gray-900 hover:bg-gray-50'
                                   }`}
                                 >
                                   <span className="font-medium">{label}</span>
                                   {vehicle.price > 0 && (
-                                    <span className="text-sm text-gray-400 ml-3 shrink-0">
+                                    <span className="text-sm text-gray-500 ml-3 shrink-0">
                                       ${vehicle.price.toLocaleString()}
                                     </span>
                                   )}
@@ -1015,42 +1015,42 @@ export default function Financing() {
                   </div>
 
                   {vehicleInterest.vehicle_id && (
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/10 backdrop-blur-sm space-y-3">
+                    <div className="p-6 rounded-xl bg-blue-50 border border-blue-200 space-y-3">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="text-xl font-bold text-white mb-1">
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">
                             {vehicleInterest.year} {vehicleInterest.make} {vehicleInterest.model}
                           </h3>
                           {vehicleInterest.trim && (
-                            <p className="text-gray-400 text-sm">{vehicleInterest.trim}</p>
+                            <p className="text-gray-500 text-sm">{vehicleInterest.trim}</p>
                           )}
                         </div>
                         {vehicleInterest.price && (
                           <div className="text-right">
-                            <p className="text-2xl font-bold text-blue-400">
+                            <p className="text-2xl font-bold text-red-600">
                               ${Number(vehicleInterest.price).toLocaleString()}
                             </p>
                           </div>
                         )}
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 pt-3 border-t border-white/10">
+                      <div className="grid grid-cols-2 gap-4 pt-3 border-t border-blue-200">
                         {vehicleInterest.stock_number && (
                           <div>
                             <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Stock Number</p>
-                            <p className="text-white font-medium">{vehicleInterest.stock_number}</p>
+                            <p className="text-gray-900 font-medium">{vehicleInterest.stock_number}</p>
                           </div>
                         )}
                         {vehicleInterest.vin && (
                           <div>
                             <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">VIN</p>
-                            <p className="text-white font-mono text-sm">{vehicleInterest.vin}</p>
+                            <p className="text-gray-900 font-mono text-sm">{vehicleInterest.vin}</p>
                           </div>
                         )}
                         {vehicleInterest.mileage && (
                           <div>
                             <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Mileage</p>
-                            <p className="text-white font-medium">{Number(vehicleInterest.mileage).toLocaleString()} miles</p>
+                            <p className="text-gray-900 font-medium">{Number(vehicleInterest.mileage).toLocaleString()} miles</p>
                           </div>
                         )}
                       </div>
@@ -1069,14 +1069,14 @@ export default function Financing() {
 
             {/* Optional Deal Preferences */}
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Additional Preferences <span className="text-sm text-gray-400 font-normal">(Optional)</span></h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional Preferences <span className="text-sm text-gray-400 font-normal">(Optional)</span></h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
                   placeholder="Salesperson Name (Optional)"
                   value={formData.salesperson_name}
                   onChange={(e) => setFormData({ ...formData, salesperson_name: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
                 <input
                   type="text"
@@ -1084,7 +1084,7 @@ export default function Financing() {
                   placeholder="Preferred Down Payment (Optional)"
                   value={formData.preferred_down_payment}
                   onChange={(e) => setFormData({ ...formData, preferred_down_payment: e.target.value })}
-                  className="px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -1094,7 +1094,7 @@ export default function Financing() {
               <button
                 type="submit"
                 disabled={formStatus === 'loading'}
-                className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-blue-500/50 hover:shadow-blue-500/80 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 rounded-lg bg-red-600 text-white font-semibold shadow-lg hover:bg-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {formStatus === 'loading' ? 'Submitting...' : 'Submit Application'}
               </button>
@@ -1109,8 +1109,8 @@ export default function Financing() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-gray-400 mb-4">Questions? We&apos;re here to help</p>
-          <a href="tel:7062377668" className="text-blue-400 hover:text-blue-300 text-lg font-semibold transition-colors">
+          <p className="text-gray-600 mb-4">Questions? We&apos;re here to help</p>
+          <a href="tel:7062377668" className="text-red-600 hover:text-red-700 text-lg font-semibold transition-colors">
             706-237-7668
           </a>
         </div>
